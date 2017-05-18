@@ -4,16 +4,9 @@
 	<groupId>com.nortal</groupId>
 	<artifactId>lazar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>realestates2</name>
+	<name>realestates</name>
 
 	<dependencies>
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</groupId> -->
-		<!-- <artifactId>spring-webmvc</artifactId> -->
-		<!-- <version>4.3.7.RELEASE</version> -->
-		<!-- </dependency> -->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -74,12 +67,6 @@
 			<version>1.1</version>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</groupId> -->
-		<!-- <artifactId>spring-jdbc</artifactId> -->
-		<!-- <version>4.3.7.RELEASE</version> -->
-		<!-- </dependency> -->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -90,7 +77,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<!-- <version>4.3.8.RELEASE</version> -->
 			<version>3.2.18.RELEASE</version>
 		</dependency>
 
