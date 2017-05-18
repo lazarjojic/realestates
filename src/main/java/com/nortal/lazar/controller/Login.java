@@ -11,11 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.nortal.lazar.entity.AgencyEntity;
-import com.nortal.lazar.entity.UserEntity;
-import com.nortal.lazar.klase.User;
-import com.nortal.lazar.service.AgencyService;
-import com.nortal.lazar.service.UserService;
+import com.nortal.lazar.agency.entity.AgencyEntity;
+import com.nortal.lazar.agency.service.AgencyService;
+import com.nortal.lazar.model.User;
+import com.nortal.lazar.user.entity.UserEntity;
+import com.nortal.lazar.user.service.UserService;
 
 @Controller
 public class Login {

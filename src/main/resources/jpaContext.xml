@@ -38,8 +38,8 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<bean id="agencyService" class="com.nortal.lazar.service.AgencyServiceImpl" />
-	<bean id="userService" class="com.nortal.lazar.service.UserServiceImpl" />
+	<bean id="agencyService" class="com.nortal.lazar.agency.service.AgencyServiceImpl" />
+	<bean id="userService" class="com.nortal.lazar.user.service.UserServiceImpl" />
 
 
 
