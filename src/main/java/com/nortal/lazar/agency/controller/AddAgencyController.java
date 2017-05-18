@@ -12,13 +12,13 @@ import com.nortal.lazar.agency.entity.AgencyEntity;
 import com.nortal.lazar.agency.service.AgencyService;
 
 @Controller
-public class EditAgency {
+public class AddAgencyController {
 
 	@Autowired
 	private AgencyService agencyService;
 
-	@RequestMapping(value = "/Protected/editAgency", method = RequestMethod.POST)
-	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/Protected/addAgency", method = RequestMethod.POST)
+	public String submitForm(HttpServletRequest request, HttpServletResponse response) {
 		String action = request.getParameter("action");
 		if (action.equals("close")) {
 			return "index";
@@ -28,15 +28,15 @@ public class EditAgency {
 			String director = request.getParameter("director");
 			String address = request.getParameter("address");
 			String phone = request.getParameter("phone");
-			AgencyEntity agency = new AgencyEntity(name, pib, director, address, phone);
-			agencyService.save(agency);
-			return "/Protected/EditAgency";
+			AgencyEntity agencyEntity = new AgencyEntity(name, pib, director, address, phone);
+			agencyService.save(agencyEntity);
+			return "/Protected/AddAgency";
 		}
 	}
 
-	@RequestMapping(value = "/Protected/editAgency", method = RequestMethod.GET)
+	@RequestMapping(value = "/Protected/addAgency", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/EditAgency";
+		return "/Protected/AddAgency";
 	}
 
 }

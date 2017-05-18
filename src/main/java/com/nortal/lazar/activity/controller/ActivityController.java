@@ -1,4 +1,4 @@
-package com.nortal.lazar.agency.controller;
+package com.nortal.lazar.activity.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,19 +12,19 @@ import com.nortal.lazar.agency.entity.AgencyEntity;
 import com.nortal.lazar.agency.service.AgencyService;
 
 @Controller
-public class Agency {
+public class ActivityController {
 
 	@Autowired
 	private AgencyService agencyService;
 
-	@RequestMapping(value = "/Protected/agency", method = RequestMethod.POST)
+	@RequestMapping(value = "/Protected/activity", method = RequestMethod.POST)
 	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
-		return "/Protected/Agency";
+		return null;
 	}
 
-	@RequestMapping(value = "/Protected/agency", method = RequestMethod.GET)
+	@RequestMapping(value = "/Protected/activity", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/Agency";
+		return "/Protected/Activity";
 	}
 
 }

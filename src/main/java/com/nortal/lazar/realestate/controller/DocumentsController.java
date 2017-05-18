@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class Photos {
+public class DocumentsController {
 
 //	@RequestMapping(value = "/Protected/addPhotos", method = RequestMethod.POST)
 //	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
@@ -24,8 +24,8 @@ public class Photos {
 //		}
 //	}
 
-	@RequestMapping(value = "/Protected/photos", method = RequestMethod.GET)
+	@RequestMapping(value = "/Protected/documents", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/Photos";
+		return "/Protected/Documents";
 	}
 }

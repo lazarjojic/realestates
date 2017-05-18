@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class EditRealEstate {
+public class AddRealEstateController {
 
-	@RequestMapping(value = "/Protected/editRealEstate", method = RequestMethod.GET)
+	@RequestMapping(value = "/Protected/addRealEstate", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/editRealEstate";
+		return "/Protected/AddRealEstate";
 	}
 
 }

@@ -2,7 +2,7 @@ package com.nortal.lazar.model;
 
 import com.nortal.lazar.user.entity.UserEntity;
 
-public class User {
+public class UserModel {
 		
 	private int id;	
 	private String first_name;	
@@ -14,7 +14,7 @@ public class User {
 	private String username;
 	private String password;
 	
-	public User (UserEntity userEntity) {
+	public UserModel (UserEntity userEntity) {
 		this.id = userEntity.getId();
 		this.first_name  = userEntity.getFirstName();
 		this.last_name = userEntity.getLastName();

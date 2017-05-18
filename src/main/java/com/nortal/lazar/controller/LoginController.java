@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nortal.lazar.agency.entity.AgencyEntity;
 import com.nortal.lazar.agency.service.AgencyService;
-import com.nortal.lazar.model.User;
+import com.nortal.lazar.model.UserModel;
 import com.nortal.lazar.user.entity.UserEntity;
 import com.nortal.lazar.user.service.UserService;
 
 @Controller
-public class Login {
+public class LoginController {
 
+	private static final String USERNAME_PARAMETER = "username";
 	private static final String PASSWORD_PARAMETER = "password";
 
 	@Autowired
@@ -40,7 +41,7 @@ public class Login {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String submitPage(HttpServletRequest request, HttpServletResponse response) {
-		String username = request.getParameter("username");
+		String username = request.getParameter(USERNAME_PARAMETER);
 		String password = request.getParameter(PASSWORD_PARAMETER);
 		UserEntity userEntity = userService.getUser(username);
 		
@@ -51,14 +52,18 @@ public class Login {
 			// error message wrong pass and stay on the same page
 			return "redirect:/login";
 		} else {
-			User user = new User (userEntity);
-			AgencyEntity agencyEntity = agencyService.getAgency(user.getAgency_id());
-			user.setAgencyName(agencyEntity.getName());
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);			
-			session.setAttribute("isAuthorized", true);		
+			setSessionData(request, userEntity);		
 			return  "/Protected/Home";
 		}
+	}
+
+	private void setSessionData(HttpServletRequest request, UserEntity userEntity) {
+		UserModel user = new UserModel (userEntity);
+		AgencyEntity agencyEntity = agencyService.getAgency(user.getAgency_id());
+		user.setAgencyName(agencyEntity.getName());
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);			
+		session.setAttribute("isAuthorized", true);
 	}
 
 }

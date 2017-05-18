@@ -16,7 +16,7 @@ import com.nortal.lazar.user.entity.UserEntity;
 import com.nortal.lazar.user.service.UserService;
 
 @Controller
-public class CreateAccount {
+public class CreateAccountController {
 
 	@Autowired
 	private AgencyService agencyService;

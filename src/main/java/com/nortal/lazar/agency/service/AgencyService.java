@@ -6,10 +6,10 @@ import com.nortal.lazar.agency.entity.AgencyEntity;
 
 public interface AgencyService {
 
-	public AgencyEntity save(AgencyEntity agencyEntity);
+	AgencyEntity save(AgencyEntity agencyEntity);
 
-	public List<Object[]> getAgenciesNames();
+	List<Object[]> getAgenciesNames();
 
-	public AgencyEntity getAgency(int id);
+	AgencyEntity getAgency(int id);
 
 }

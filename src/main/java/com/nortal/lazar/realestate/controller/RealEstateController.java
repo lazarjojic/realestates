@@ -1,4 +1,4 @@
-package com.nortal.lazar.realestate.repository;
+package com.nortal.lazar.realestate.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,16 +12,18 @@ import com.nortal.lazar.agency.entity.AgencyEntity;
 import com.nortal.lazar.agency.service.AgencyService;
 
 @Controller
-public class RealEstate {
+public class RealEstateController  {
 
 	@Autowired
 	private AgencyService agencyService;
 
+	
 	@RequestMapping(value = "/Protected/realEstate", method = RequestMethod.POST)
 	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
 		return "/Protected/RealEstate";
 	}
 
+	
 	@RequestMapping(value = "/Protected/realEstate", method = RequestMethod.GET)
 	public String openPage() {
 		return "/Protected/RealEstate";

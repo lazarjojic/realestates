@@ -1,4 +1,4 @@
-package com.nortal.lazar.agency.controller;
+package com.nortal.lazar.realestate.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,17 +12,17 @@ import com.nortal.lazar.agency.entity.AgencyEntity;
 import com.nortal.lazar.agency.service.AgencyService;
 
 @Controller
-public class SearchAgencies {
+public class SearchRealEstatesController {
 
 	@Autowired
 	private AgencyService agencyService;
 
-	@RequestMapping(value = "/Protected/searchAgencies", method = RequestMethod.POST)
+	@RequestMapping(value = "/Protected/searchRealEstates", method = RequestMethod.POST)
 	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
 		String action = request.getParameter("action");
-		if (action.equals("show")) {
-			return "/Protected/Agency";
-		} else if (action.equals("edit")) {
+		if (action.equals("Show")) {
+			return "/Protected/RealEstate";
+		} else if (action.equals("Edit")) {
 			String name = request.getParameter("name");
 			String pib = request.getParameter("pib");
 			String director = request.getParameter("director");
@@ -30,17 +30,17 @@ public class SearchAgencies {
 			String phone = request.getParameter("phone");
 			AgencyEntity agency = new AgencyEntity(name, pib, director, address, phone);
 			agencyService.save(agency);
-			return "/Protected/EditAgency";
-		} else if (action.equals("delete")) {
+			return "/Protected/EditRealEstate";
+		} else if (action.equals("Delete")) {
 			return null;
 		} else {
-			return "/Protected/SearchAgencies";
+			return "/Protected/SearchRealEstates";
 		}
 	}
 
-	@RequestMapping(value = "/Protected/searchAgencies", method = RequestMethod.GET)
+	@RequestMapping(value = "/Protected/searchRealEstates", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/SearchAgencies";
+		return "/Protected/SearchRealEstates";
 	}
 
 }

@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nortal.lazar.agency.service.AgencyService;
-import com.nortal.lazar.model.User;
+import com.nortal.lazar.model.UserModel;
 
 @Controller
-public class Account {
+public class AccountController {
 
 	@Autowired
 	private AgencyService agencyService;
@@ -27,7 +27,7 @@ public class Account {
 	@RequestMapping(value = "/Protected/account", method = RequestMethod.GET)
 	public String openPage(HttpServletRequest request, HttpServletResponse response, Model model) {
 		HttpSession session = request.getSession();
-		User user = (User)session.getAttribute("user");
+		UserModel user = (UserModel)session.getAttribute("user");
 		model.addAttribute("account", user);
 		return "/Protected/Account";
 	}
