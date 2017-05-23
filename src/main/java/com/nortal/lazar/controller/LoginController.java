@@ -25,7 +25,7 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AgencyService agencyService;
 
@@ -44,7 +44,7 @@ public class LoginController {
 		String username = request.getParameter(USERNAME_PARAMETER);
 		String password = request.getParameter(PASSWORD_PARAMETER);
 		UserEntity userEntity = userService.getUser(username);
-		
+
 		if (userEntity == null) {
 			// error message and stay on the same page
 			return "redirect:/login";
@@ -52,17 +52,17 @@ public class LoginController {
 			// error message wrong pass and stay on the same page
 			return "redirect:/login";
 		} else {
-			setSessionData(request, userEntity);		
-			return  "/Protected/Home";
+			setSessionData(request, userEntity);
+			return "/Protected/Home";
 		}
 	}
 
 	private void setSessionData(HttpServletRequest request, UserEntity userEntity) {
-		UserModel user = new UserModel (userEntity);
-		AgencyEntity agencyEntity = agencyService.getAgency(user.getAgency_id());
+		UserModel user = new UserModel(userEntity);
+		AgencyEntity agencyEntity = agencyService.getAgency(user.getAgencyID());
 		user.setAgencyName(agencyEntity.getName());
 		HttpSession session = request.getSession();
-		session.setAttribute("user", user);			
+		session.setAttribute("user", user);
 		session.setAttribute("isAuthorized", true);
 	}
 

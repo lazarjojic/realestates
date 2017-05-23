@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="agency")
 public class AgencyEntity {
@@ -13,13 +14,13 @@ public class AgencyEntity {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private int id;
+	private int ID;
 
 	@Column(name = "name")
 	private String name;
 
 	@Column(name = "pib")
-	private String pib;
+	private String PIB;
 
 	@Column(name = "director")
 	private String director;
@@ -36,20 +37,20 @@ public class AgencyEntity {
 		
 	}
 
-	public AgencyEntity(String name, String pib, String director, String address, String phone) {
+	public AgencyEntity(String name, String PIB, String director, String address, String phone) {
 		this.name = name;
-		this.pib = pib;
+		this.PIB = PIB;
 		this.director = director;
 		this.address = address;
 		this.phone = phone;
 	}
 
-	public int getId() {
-		return id;
+	public int getID() {
+		return ID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
 	public String getName() {
@@ -60,12 +61,12 @@ public class AgencyEntity {
 		this.name = name;
 	}
 
-	public String getPib() {
-		return pib;
+	public String getPIB() {
+		return PIB;
 	}
 
-	public void setPib(String pib) {
-		this.pib = pib;
+	public void setPib(String PIB) {
+		this.PIB = PIB;
 	}
 
 	public String getDirector() {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nortal.lazar.agency.service.AgencyService;
+import com.nortal.lazar.model.UserModel;
 import com.nortal.lazar.user.entity.UserEntity;
 import com.nortal.lazar.user.service.UserService;
 
@@ -28,6 +29,7 @@ public class CreateAccountController {
 	public String openKreiranjeNaloga(Model model) {
 		List<Object[]> agencies = agencyService.getAgenciesNames();
 		model.addAttribute("agencies", agencies);
+		model.addAttribute("profile", new UserModel());
 		return "/Protected/CreateAccount";
 	}
 

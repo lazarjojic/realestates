@@ -9,43 +9,58 @@
 
 	<h1>Account</h1>
 
-	<form id="accountForm" action="<%=request.getContextPath() + "/Protected/account"%>" method="post">
+	<form id="createaccountform" action="<%=request.getContextPath() + "/Protected/createAccount"%>" method="post">
 
 		<table>
 			<tr>
 				<td>First Name:</td>
-				<td>${account.getFirst_name()}</td>
+				<td><input type="text" name="firstName" />
 			</tr>
 
 			<tr>
 				<td>Last Name:</td>
-				<td>${account.getLast_name()}</td>
+				<td><input type="text" name="lastName" />
 			</tr>
 
 			<tr>
 				<td>Phone:</td>
-				<td>${account.getPhone()}</td>
+				<td><input type="text" name="phone" />
 			</tr>
 
 			<tr>
 				<td>Agency:</td>
-				<td>${account.getAgencyName()}</td>
+				<td><select name="agency">
+						<c:forEach var="item" items="${agencies}">
+							<option value="${item[0]}">${item[1]}</option>
+						</c:forEach>
+				</select></td>
 			</tr>
 
 			<tr>
 				<td>Status:</td>
-				<td>${account.getStatus()}</td>
+				<td><select name="status">
+						<option value="admin">Administrator</option>
+						<option value="moderator">Moderator</option>
+						<option value="agent">Agent</option>
+				</select></td>
 			</tr>
 
 			<tr>
 				<td>Username:</td>
-				<td>${account.getUsername()}</td>
+				<td><input type="text" name="username" />
 			</tr>
 
 			<tr>
-				<td />
-				<td><input type="submit" name="close" value="Close" /></td>
+				<td>Password:</td>
+				<td><input type="text" name="password" />
 			</tr>
+
+			<tr>
+				<td><input type="submit" name="action" value="Edit" /></td>
+				<td><input type="submit" name="action" value="Close" /></td>
+			</tr>
+
+
 
 		</table>
 

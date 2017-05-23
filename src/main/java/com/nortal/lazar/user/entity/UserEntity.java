@@ -13,29 +13,29 @@ public class UserEntity {
 	@GeneratedValue
 	private int id;
 
-	@Column
-	private String first_name;
+	@Column(name = "first_name")
+	private String firstName;
 
-	@Column
-	private String last_name;
+	@Column(name = "last_name")
+	private String lastName;
 
-	@Column
+	@Column(name = "phone")
 	private String phone;
 
-	@Column
-	private int agency_id;
+	@Column(name = "agency_id")
+	private int agencyID;
 
-	@Column
+	@Column(name = "status")
 	private String status;
 
-	@Column
+	@Column(name = "username")
 	private String username;
 
-	@Column
+	@Column(name = "password")
 	private String password;
-	
-	public UserEntity () {
-		
+
+	public UserEntity() {
+
 	}
 
 	public int getId() {
@@ -47,19 +47,19 @@ public class UserEntity {
 	}
 
 	public String getFirstName() {
-		return first_name;
+		return firstName;
 	}
 
-	public void setFirstName(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
-		return last_name;
+		return lastName;
 	}
 
-	public void setLastName(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getPhone() {
@@ -71,11 +71,11 @@ public class UserEntity {
 	}
 
 	public int getAgency_id() {
-		return agency_id;
+		return agencyID;
 	}
 
-	public void setAgency_id(int agency_id) {
-		this.agency_id = agency_id;
+	public void setAgency_id(int agencyID) {
+		this.agencyID = agencyID;
 	}
 
 	public String getStatus() {
@@ -102,12 +102,11 @@ public class UserEntity {
 		this.password = password;
 	}
 
-	public UserEntity(String first_name, String last_name, String phone, int agency_id, String status, String username,
-			String password) {
-		this.first_name = first_name;
-		this.last_name = last_name;
+	public UserEntity(String firstName, String lastName, String phone, int agencyID, String status, String username, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.phone = phone;
-		this.agency_id = agency_id;
+		this.agencyID = agencyID;
 		this.status = status;
 		this.username = username;
 		this.password = password;

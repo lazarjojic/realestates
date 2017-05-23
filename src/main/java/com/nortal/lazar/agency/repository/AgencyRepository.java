@@ -10,6 +10,6 @@ public interface AgencyRepository {
 
 	List<Object[]> getAgenciesNames();
 
-	AgencyEntity getAgency(int id);
+	AgencyEntity getAgency(int ID);
 
 }

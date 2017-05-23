@@ -2,65 +2,57 @@ package com.nortal.lazar.model;
 
 import com.nortal.lazar.user.entity.UserEntity;
 
+/*
+ * Model class based on User table and agency name as additional information
+ */
 public class UserModel {
-		
-	private int id;	
-	private String first_name;	
-	private String last_name;	
-	private String phone;	
-	private int agency_id;
+
+	private int ID;
+	private String firstName;
+	private String lastName;
+	private String phone;
+	private int agencyID;
 	private String agencyName;
-	private String status;	
+	private String status;
 	private String username;
 	private String password;
-	
-	public UserModel (UserEntity userEntity) {
-		this.id = userEntity.getId();
-		this.first_name  = userEntity.getFirstName();
-		this.last_name = userEntity.getLastName();
+
+	public UserModel(UserEntity userEntity) {
+		this.ID = userEntity.getId();
+		this.firstName = userEntity.getFirstName();
+		this.lastName = userEntity.getLastName();
 		this.phone = userEntity.getPhone();
-		this.agency_id = userEntity.getAgency_id();
+		this.agencyID = userEntity.getAgency_id();
 		this.status = userEntity.getStatus();
 		this.username = userEntity.getUsername();
 		this.password = userEntity.getPassword();
 	}
-	
-	
 
-	public String getAgencyName() {
-		return agencyName;
+	public UserModel() {
 	}
 
-
-
-	public void setAgencyName(String agencyName) {
-		this.agencyName = agencyName;
+	public int getID() {
+		return ID;
 	}
 
-
-
-	public int getId() {
-		return id;
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getPhone() {
@@ -71,12 +63,20 @@ public class UserModel {
 		this.phone = phone;
 	}
 
-	public int getAgency_id() {
-		return agency_id;
+	public int getAgencyID() {
+		return agencyID;
 	}
 
-	public void setAgency_id(int agency_id) {
-		this.agency_id = agency_id;
+	public void setAgencyID(int agencyID) {
+		this.agencyID = agencyID;
+	}
+
+	public String getAgencyName() {
+		return agencyName;
+	}
+
+	public void setAgencyName(String agencyName) {
+		this.agencyName = agencyName;
 	}
 
 	public String getStatus() {

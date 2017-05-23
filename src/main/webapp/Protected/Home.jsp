@@ -44,7 +44,7 @@ body {
 
 			<li><a href="#">Accounts</a>
 				<ul>
-					<li><a href="<%=request.getContextPath() + "/Protected/createAccount"%>">Create Account</a></li>
+					<li><a href="<%=request.getContextPath() + "/Protected/account"%>">Create Account</a></li>
 					<li><a href="<%=request.getContextPath() + "/searchAccounts"%>">Search Accounts</a></li>
 
 				</ul></li>
