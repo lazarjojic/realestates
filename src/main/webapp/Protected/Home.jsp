@@ -65,16 +65,13 @@ body {
 
 	<li><a href="/realestates/Protected/searchRealEstates">Search Real Estates</a></li>
 
-	<li><a href="<%=request.getContextPath() + "/Protected/account"%>">Profile</a></li>
+	<li><a href="<%=request.getContextPath() + "/Protected/profile"%>">Profile</a></li>
 	<li><a href="#">Help</a></li>
 	<li><a href="#">Logout</a></li>
 	<li><a href="#">About</a></li>
 
 	</ul>
 	</nav>
-
-
-
 
 
 </body>

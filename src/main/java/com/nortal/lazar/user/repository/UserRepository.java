@@ -8,4 +8,8 @@ public interface UserRepository {
 
 	UserEntity getUser(String username);
 
+	void updateUser(UserEntity userEntity);
+
+	void updatePassword(int ID, String password);
+
 }

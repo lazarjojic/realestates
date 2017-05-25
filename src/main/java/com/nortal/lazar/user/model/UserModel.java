@@ -1,4 +1,4 @@
-package com.nortal.lazar.model;
+package com.nortal.lazar.user.model;
 
 import com.nortal.lazar.user.entity.UserEntity;
 

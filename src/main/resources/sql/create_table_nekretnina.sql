@@ -1,0 +1,25 @@
+CREATE TABLE nekretnina
+  (
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    agencija_ID INT,
+    korisnik_id INT,
+    cena DOUBLE(10,2) NOT NULL,
+    povrsina DOUBLE NOT NULL,
+    struktura   VARCHAR(20) NOT NULL,
+    mesto       VARCHAR(20) NOT NULL,
+    opstina     VARCHAR(20) NOT NULL,
+    ulica       VARCHAR(20) NOT NULL,
+    broj        VARCHAR(5) NOT NULL,
+    sprat       INT NOT NULL,
+    grejanje    VARCHAR(20) NOT NULL,
+    terasa      INT NOT NULL,
+    tip         VARCHAR(20) NOT NULL,
+    uknjizenost INT NOT NULL,
+    status      VARCHAR(20) NOT NULL,
+    varijanta   VARCHAR(20) NOT NULL,
+    opis        VARCHAR(250) NOT NULL,
+    prostorije  VARCHAR(100) NOT NULL,
+    zakljucenje VARCHAR(20) NOT NULL,
+    FOREIGN KEY (agencija_ID) REFERENCES agencija(id),
+    FOREIGN KEY (korisnik_id) REFERENCES korisnik(id)
+  );

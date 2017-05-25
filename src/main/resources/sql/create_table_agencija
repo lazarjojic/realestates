@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS agencija
+  (
+    id      INT PRIMARY KEY AUTO_INCREMENT,
+    naziv   VARCHAR (20) NOT NULL,
+    PIB     VARCHAR (15) NOT NULL,
+    direktor VARCHAR (30) NOT NULL,
+    adresa  VARCHAR (50) NOT NULL,   
+    telefon VARCHAR (20) NOT NULL
+  );

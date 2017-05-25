@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,22 +10,22 @@
 
 	<h1>Account</h1>
 
-	<form id="createaccountform" action="<%=request.getContextPath() + "/Protected/createAccount"%>" method="post">
+	<form id="accountForm" action="<%=request.getContextPath() + "/Protected/account"%>" method="post">
 
 		<table>
 			<tr>
 				<td>First Name:</td>
-				<td><input type="text" name="firstName" />
+				<td><input type="text" name="firstName" value="${account.getFirstName()}" />
 			</tr>
 
 			<tr>
 				<td>Last Name:</td>
-				<td><input type="text" name="lastName" />
+				<td><input type="text" name="lastName" value="${account.getLastName()}" />
 			</tr>
 
 			<tr>
 				<td>Phone:</td>
-				<td><input type="text" name="phone" />
+				<td><input type="text" name="phone" value="${account.getPhone()}" />
 			</tr>
 
 			<tr>
@@ -45,15 +46,25 @@
 				</select></td>
 			</tr>
 
-			<tr>
-				<td>Username:</td>
-				<td><input type="text" name="username" />
-			</tr>
+			<c:choose>
+				<c:when test="${sessionScope.user.status == 'admin'}">
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" name="username" value="" />
+					</tr>
 
-			<tr>
-				<td>Password:</td>
-				<td><input type="text" name="password" />
-			</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="text" name="password" value="" />
+					</tr>
+
+				</c:when>
+				<c:otherwise>
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" name="username" value="" readonly />
+				</c:otherwise>
+			</c:choose>
 
 			<tr>
 				<td><input type="submit" name="action" value="Edit" /></td>

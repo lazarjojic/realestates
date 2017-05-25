@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nortal.lazar.agency.service.AgencyService;
-import com.nortal.lazar.model.UserModel;
 import com.nortal.lazar.user.entity.UserEntity;
+import com.nortal.lazar.user.model.UserModel;
 import com.nortal.lazar.user.service.UserService;
 
 @Controller

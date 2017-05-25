@@ -3,46 +3,45 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Profile</title>
 </head>
 <body>
-	<h1>Account</h1>
+	<h1>Profile</h1>
 
 	<form id="accountForm" action="<%=request.getContextPath() + "/Protected/profile"%>" method="post">
-
 		<table>
 			<tr>
 				<td>First Name:</td>
-				<td>${account.getFirstName()}</td>
+				<td>${sessionScope.user.getFirstName()}</td>
 			</tr>
 
 			<tr>
 				<td>Last Name:</td>
-				<td>${account.getLastName()}</td>
+				<td>${sessionScope.user.getLastName()}</td>
 			</tr>
 
 			<tr>
 				<td>Phone:</td>
-				<td>${account.getPhone()}</td>
+				<td>${sessionScope.user.getPhone()}</td>
 			</tr>
 
 			<tr>
 				<td>Agency:</td>
-				<td>${account.getAgencyName()}</td>
+				<td>${sessionScope.user.getAgencyName()}</td>
 			</tr>
 
 			<tr>
 				<td>Status:</td>
-				<td>${account.getStatus()}</td>
+				<td>${sessionScope.user.getStatus()}</td>
 			</tr>
 
 			<tr>
 				<td>Username:</td>
-				<td>${account.getUsername()}</td>
+				<td>${sessionScope.user.getUsername()}</td>
 			</tr>
 
 			<tr>
-				<td><input type="submit" name="action" value="Edit" /></td>
+				<td><input type="submit" name="action" value="Change password" /></td>
 				<td><input type="submit" name="action" value="Close" /></td>
 			</tr>
 

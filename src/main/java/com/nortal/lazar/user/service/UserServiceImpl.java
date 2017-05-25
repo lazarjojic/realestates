@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.getUser(username);
 	}
 
+	@Transactional
+	public void updatePassword(int userID, String newPassword) {
+		userRepository.updatePassword(userID, newPassword);
+	}
+
 }

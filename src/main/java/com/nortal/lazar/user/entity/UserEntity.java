@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.nortal.lazar.user.model.UserModel;
+
 @Entity
 @Table(name = "user")
 public class UserEntity {
@@ -110,6 +112,16 @@ public class UserEntity {
 		this.status = status;
 		this.username = username;
 		this.password = password;
+	}
+	
+	public UserEntity (UserModel userModel) {
+		this.firstName = userModel.getFirstName();
+		this.lastName = userModel.getLastName();
+		this.phone = userModel.getPhone();
+		this.agencyID = userModel.getID();
+		this.status = userModel.getStatus();
+		this.username = userModel.getUsername();
+		this.password = userModel.getPassword();
 	}
 
 }

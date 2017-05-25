@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nortal.lazar.agency.service.AgencyService;
-import com.nortal.lazar.model.UserModel;
+import com.nortal.lazar.user.model.UserModel;
 
 @Controller
 public class AccountController {
