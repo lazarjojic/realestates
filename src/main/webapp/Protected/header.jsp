@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Header</title>
 </head>
 <body>
+
+<h1>Author: LAZAR JOJIC</h1>
 
 </body>
 </html>

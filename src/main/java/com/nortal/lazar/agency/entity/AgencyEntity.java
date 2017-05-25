@@ -6,9 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="agency")
+@Table(name = "agency")
 public class AgencyEntity {
 
 	@Id
@@ -30,11 +29,9 @@ public class AgencyEntity {
 
 	@Column(name = "phone")
 	private String phone;
-	
-	
 
 	public AgencyEntity() {
-		
+
 	}
 
 	public AgencyEntity(String name, String PIB, String director, String address, String phone) {
@@ -93,6 +90,9 @@ public class AgencyEntity {
 		this.phone = phone;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "AgencyEntity [ID=" + ID + ", name=" + name + ", PIB=" + PIB + ", director=" + director + ", address=" + address + ", phone=" + phone + "]";
+	}
 
 }

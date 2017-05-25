@@ -12,4 +12,6 @@ public interface AgencyRepository {
 
 	AgencyEntity getAgency(int ID);
 
+	List<AgencyEntity> getAgencies(String name, String PIB, String director, String address, String phone);
+
 }
