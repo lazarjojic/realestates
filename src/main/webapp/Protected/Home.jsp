@@ -60,8 +60,8 @@ body {
 		<ul>
 			<li>Real Estates
 				<ul>
-					<li><a href="<%=request.getContextPath() + "/Protected/addRealEstate"%>">Add Real Estate</a></li>
-					<li><a href="<%=request.getContextPath() + "/Protected/searchRealEstates"%>">Search Real Estates</a></li>
+					<li><a href="<%=request.getContextPath() + "/Protected/RealEstate/addEditRealEstate"%>">Add Real Estate</a></li>
+					<li><a href="<%=request.getContextPath() + "/Protected/RealEstate/searchRealEstates"%>">Search Real Estates</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -69,7 +69,7 @@ body {
 	
 	<c:if test="${sessionScope.user.status == 'agent'}">
 		<ul>
-			<li><a href="<%=request.getContextPath() + "/Protected/searchRealEstates"%>">Search Real Estates</a></li>
+			<li><a href="<%=request.getContextPath() + "/Protected/RealEstate/searchRealEstates"%>">Search Real Estates</a></li>
 		</ul>
 	</c:if>
 

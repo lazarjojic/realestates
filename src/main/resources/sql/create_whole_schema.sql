@@ -32,22 +32,51 @@ CREATE TABLE IF NOT EXISTS real_estate
     user_id INT,
     price DOUBLE(10,2) NOT NULL,
     area DOUBLE NOT NULL,
-    structure   VARCHAR(20) NOT NULL,
-    city       VARCHAR(20) NOT NULL,
-    street       VARCHAR(20) NOT NULL,
-    number        VARCHAR(5) NOT NULL,
-    floor       INT NOT NULL,
+    structure   VARCHAR(20) NOT NULL,   
     heating    VARCHAR(20) NOT NULL,
-    balcony      INT NOT NULL,
+    balcony      BIT(1) NOT NULL,
     type         VARCHAR(20) NOT NULL,
-    booked INT NOT NULL,
+    booked BIT(1) NOT NULL,
     status      VARCHAR(20) NOT NULL,
-    variant   VARCHAR(20) NOT NULL,
+    mode   VARCHAR(20) NOT NULL,
     description        VARCHAR(250) NOT NULL,
     rooms  VARCHAR(100) NOT NULL,
+    finance VARCHAR(100) NOT NULL,
     conclusion VARCHAR(20) NOT NULL,
     FOREIGN KEY (agency_id) REFERENCES agency(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
   );
+  
+CREATE TABLE IF NOT EXISTS real_estate_address
+  (
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    real_estate_id INT,   
+    city       VARCHAR(20) NOT NULL,
+    street       VARCHAR(20) NOT NULL,
+    number        VARCHAR(5) NOT NULL,
+    floor       INT NOT NULL,
+    FOREIGN KEY (real_estate_id) REFERENCES real_estate(id)    
+  );
+  
+CREATE TABLE IF NOT EXISTS PHOTOS
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	real_estate_id INT,
+	path varchar(150) not null,
+	TYPE INT NOT NULL,
+	FOREIGN KEY (real_estate_id) REFERENCES real_estate(id)	
+);
+
+CREATE TABLE IF NOT EXISTS DOCUMENTS
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(30) NOT NULL,
+	TYPE VARCHAR(30) NOT NULL,
+	DESCRIPTION VARCHAR(150),
+	CREATION_DATE DATE NOT NULL,	
+	path varchar(150) not null,	
+	real_estate_id INT,
+	FOREIGN KEY (real_estate_id) REFERENCES real_estate(id)	
+);
   
   

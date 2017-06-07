@@ -1,8 +1,12 @@
 package com.nortal.lazar.agency.model;
 
+import com.nortal.lazar.agency.entity.AgencyEntity;
+
 /**
  * 
- * @author Lazar Model class that is representation of agency DB table
+ * @author Lazar
+ * 
+ *         Model class that is representation of agency DB table
  */
 public class AgencyModel {
 
@@ -32,6 +36,15 @@ public class AgencyModel {
 
 	public AgencyModel() {
 
+	}
+
+	public AgencyModel(AgencyEntity agencyEntity) {
+		this.ID = agencyEntity.getID();
+		this.name = agencyEntity.getName();
+		this.PIB = agencyEntity.getPIB();
+		this.director = agencyEntity.getDirector();
+		this.address = agencyEntity.getAddress();
+		this.phone = agencyEntity.getPhone();
 	}
 
 	public int getID() {

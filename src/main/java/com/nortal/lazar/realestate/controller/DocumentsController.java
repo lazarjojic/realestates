@@ -24,8 +24,8 @@ public class DocumentsController {
 //		}
 //	}
 
-	@RequestMapping(value = "/Protected/documents", method = RequestMethod.GET)
+	@RequestMapping(value = "/Protected/RealEstate/documents", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/Documents";
+		return "/Protected/RealEstate/Documents";
 	}
 }

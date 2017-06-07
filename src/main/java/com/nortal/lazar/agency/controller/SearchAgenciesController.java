@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.nortal.lazar.agency.entity.AgencyEntity;
 import com.nortal.lazar.agency.model.AgencyModel;
 import com.nortal.lazar.agency.service.AgencyService;
 
+@SessionAttributes("agencyToView")
 @Controller
 public class SearchAgenciesController {
 
@@ -23,29 +27,32 @@ public class SearchAgenciesController {
 	private AgencyService agencyService;
 
 	@RequestMapping(value = "/Protected/Agency/searchAgencies", method = RequestMethod.POST)
-	public String staOvde(@ModelAttribute("searchAgencies") AgencyModel agencyModel, HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String submitSearchAgenciesPage(@ModelAttribute("agency") AgencyModel agencyModel, HttpServletRequest request, HttpServletResponse response, Model model,
+			HttpSession session) {
 		String action = request.getParameter("action");
-		if (action.equals("show")) {
-			return "/Protected/Agency/ViewAgency";
-		} else if (action.equals("edit")) {
-			String name = request.getParameter("name");
-			String pib = request.getParameter("pib");
-			String director = request.getParameter("director");
-			String address = request.getParameter("address");
-			String phone = request.getParameter("phone");
-			AgencyEntity agency = new AgencyEntity(name, pib, director, address, phone);
-			agencyService.save(agency);
-			return "/Protected/Agency/EditAgency";
-		} else if (action.equals("delete")) {
-			return null;
-		} else if (action.equals("search")) {
+		if (action.equals("Search")) {
 			AgencyModel finalAgencyModel = formatSearchParameters(agencyModel);
-			List<AgencyEntity> agencies = agencyService.getAncies(finalAgencyModel.getName(), finalAgencyModel.getPIB(), finalAgencyModel.getDirector(),
+			List<AgencyEntity> foundAgencies = agencyService.getAncies(finalAgencyModel.getName(), finalAgencyModel.getPIB(), finalAgencyModel.getDirector(),
 					finalAgencyModel.getAddress(), finalAgencyModel.getPhone());
-			model.addAttribute("agencies", agencies);
+			model.addAttribute("agencies", foundAgencies);
+			session.setAttribute("foundAgencies", foundAgencies);
 			return "/Protected/Agency/SearchAgencies";
 		} else {
-			return "/Protected/Agency/SearchAgencies";
+			int selectedIndex = Integer.parseInt(request.getParameter("selectedIndex"));
+			List<AgencyEntity> foundAgencies = (List<AgencyEntity>) session.getAttribute("foundAgencies");
+			AgencyModel agencyToView = new AgencyModel(foundAgencies.get(selectedIndex - 1));
+			model.addAttribute("agency", agencyToView);
+			model.addAttribute("agencyToView", agencyToView);
+			session.removeAttribute("foundAgencies");
+			if (action.equals("Show")) {
+				return "/Protected/Agency/ViewAgency";
+			} else if (action.equals("Edit")) {
+				return "/Protected/Agency/AddEditAgency";
+			} else if (action.equals("Delete")) {
+				return null;
+			} else {
+				return "/Protected/Agency/SearchAgencies";
+			}
 		}
 	}
 

@@ -16,7 +16,7 @@ public class GlobalInterceptor extends HandlerInterceptorAdapter {
 		Object isAuthorizedAttribute = session.getAttribute("isAuthorized");
 
 		if (isAuthorizedAttribute == null) {
-			response.sendRedirect(request.getContextPath() + "/realestates/login");
+			response.sendRedirect(request.getContextPath() + "/login");
 			return false;
 		}
 

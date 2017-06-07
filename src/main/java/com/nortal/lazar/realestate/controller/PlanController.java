@@ -24,8 +24,8 @@ public class PlanController {
 //		}
 //	}
 
-	@RequestMapping(value = "/Protected/plan", method = RequestMethod.GET)
+	@RequestMapping(value = "/Protected/RealEstate/plan", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/Plan";
+		return "/Protected/RealEstate/Plan";
 	}
 }

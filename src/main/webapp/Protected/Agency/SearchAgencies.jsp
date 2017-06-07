@@ -7,11 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search Agencies</title>
 <style>
+tr {
+	cursor: pointer;
+	transition: all .25s ease-in-out
+}
+
+.selected {
+	background-color: red;
+	font-weight: bold;
+	color: #fff;
+}
 </style>
+
+
 </head>
 <body>
 
-	<form:form action="<%=request.getContextPath() + \"/Protected/Agency/searchAgencies\"%>" modelAttribute="searchAgencies" method="POST">
+	<form:form action="<%=request.getContextPath() + \"/Protected/Agency/searchAgencies\"%>" modelAttribute="agency" method="POST">
 		<table>
 			<tr>
 				<td>
@@ -43,7 +55,7 @@
 
 
 						<tr>
-							<td><input type="submit" name="action" value="search" /></td>
+							<td><input type="submit" name="action" value="Search" /></td>
 						</tr>
 
 					</table>
@@ -51,7 +63,7 @@
 				</td>
 				<td>
 
-					<table>
+					<table id="listOfAgencies" border="1">
 						<tr>
 							<th>Name</th>
 							<th>PIB</th>
@@ -72,15 +84,37 @@
 						</c:forEach>
 
 
-					</table>
+					</table> <script>
+						function selectedRow() {
+							var index, table = document
+									.getElementById("listOfAgencies");
+
+							for (var i = 1; i < table.rows.length; i++) {
+								table.rows[i].onclick = function() {
+									if (typeof index !== "undefined") {
+										table.rows[index].classList
+												.toggle("selected");
+									}
+									index = this.rowIndex;
+									document.getElementById("selectedIndex").value = index;
+									this.classList.toggle("selected");
+								};
+							}
+						}
+						selectedRow();
+					</script>
 				</td>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="action" value="Show" /> <input type="submit" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="submit" name="action" value="Close" />
+				<td><input type="submit" name="action" value="Show" /><input type="submit" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> 
+				<input type="submit" name="action" value="Close" />
+				<input type="text" id="selectedIndex" name="selectedIndex" style="display: none" />
 				</td>
 			</tr>
 		</table>
 	</form:form>
+	
+
 
 
 

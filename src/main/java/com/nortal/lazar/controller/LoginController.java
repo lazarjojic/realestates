@@ -38,6 +38,8 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView openPage(HttpServletRequest request, HttpServletResponse response) {
+		
+		this.getClass().getClassLoader().getResourceAsStream("korali.jpg");
 		if (isUserLogedin(request)) {
 			return new ModelAndView("Protected/Home");
 		} else {
