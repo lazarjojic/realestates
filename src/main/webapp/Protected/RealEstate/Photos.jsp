@@ -9,39 +9,30 @@
 </head>
 <body>
 
+	<form:form action="${pageContext.servletContext.contextPath}/protected/realEstate/photos" method="POST" enctype="multipart/form-data" id="photosForm">
 
-	<form:form action="<%=request.getContextPath() + \"/protected/realEstate/photos\"%>" method="post" enctype="multipart/form-data" id="photosForm">
-		<img alt="Image" src="${pageContext.servletContext.contextPath}/Files/profile_photo/rudar.jpg" style="width: 400px; height: 300px;">
+		<img alt="Image" src="${pageContext.servletContext.contextPath}/Files/profile_photo/rudar.jpg" style="width: 400px; height: 300px;" />
 		<br />
 		<br />
-		<input type="submit" name="previous" value="Previous">
+		<input type="submit" name="action" value="Previous" />
 		<span>brojevi</span>
-		<input type="submit" name="previous" value="Next">
-		<input type="submit" name="previous" value="Delete">
+		<input type="submit" name="action" value="Next" />
+		<input type="submit" name="action" value="Delete" />
 
 		<br />
 		<br />
+		
 		<c:if test="${sessionScope.user.status != 'agent'}">
-		
-		File:
-            <input type="file" name="file" id="file" />
-			<br />
-		
-			Location: <input type="text" name="location" />
-			<input type="submit" name="browse" value="Browse" />
+			File:<input type="file" name="file" id="file" />
 			<input type="submit" name="action" value="Add" />
-
 		</c:if>
 		<br />
 		<br />
 
-		<input type="submit" name="action" value="Close">
-		<input type="submit" name="action" value="Save">
+		<input type="submit" name="action" value="Close" />
+		<input type="submit" name="action" value="Save" />
 
 	</form:form>
-
-
-
 
 </body>
 </html>

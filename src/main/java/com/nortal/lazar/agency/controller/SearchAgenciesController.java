@@ -26,7 +26,7 @@ public class SearchAgenciesController {
 	@Autowired
 	private AgencyService agencyService;
 
-	@RequestMapping(value = "/Protected/Agency/searchAgencies", method = RequestMethod.POST)
+	@RequestMapping(value = "/protected/agency/searchAgencies", method = RequestMethod.POST)
 	public String submitSearchAgenciesPage(@ModelAttribute("agency") AgencyModel agencyModel, HttpServletRequest request, HttpServletResponse response, Model model,
 			HttpSession session) {
 		String action = request.getParameter("action");
@@ -36,7 +36,7 @@ public class SearchAgenciesController {
 					finalAgencyModel.getAddress(), finalAgencyModel.getPhone());
 			model.addAttribute("agencies", foundAgencies);
 			session.setAttribute("foundAgencies", foundAgencies);
-			return "/Protected/Agency/SearchAgencies";
+			return "/protected/agency/SearchAgencies";
 		} else {
 			int selectedIndex = Integer.parseInt(request.getParameter("selectedIndex"));
 			List<AgencyEntity> foundAgencies = (List<AgencyEntity>) session.getAttribute("foundAgencies");
@@ -45,20 +45,20 @@ public class SearchAgenciesController {
 			model.addAttribute("agencyToView", agencyToView);
 			session.removeAttribute("foundAgencies");
 			if (action.equals("Show")) {
-				return "/Protected/Agency/ViewAgency";
+				return "/protected/agency/ViewAgency";
 			} else if (action.equals("Edit")) {
-				return "/Protected/Agency/AddEditAgency";
+				return "/protected/agency/AddEditAgency";
 			} else if (action.equals("Delete")) {
 				return null;
 			} else {
-				return "/Protected/Agency/SearchAgencies";
+				return "/protected/agency/SearchAgencies";
 			}
 		}
 	}
 
-	@RequestMapping(value = "/Protected/Agency/searchAgencies", method = RequestMethod.GET)
+	@RequestMapping(value = "/protected/agency/searchAgencies", method = RequestMethod.GET)
 	public String openSearchAgenciesPage() {
-		return "/Protected/Agency/SearchAgencies";
+		return "/protected/agency/SearchAgencies";
 	}
 
 	/**

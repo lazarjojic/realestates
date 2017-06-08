@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,166 +8,143 @@
 <title>AddRealEstate</title>
 </head>
 <body>
+	<h1>Add/Edit Real Estate</h1>
+	<hr>
+	<h3>Real Estate Data</h3>
 
-	<form:form action="<%=request.getContextPath() + \"/protected/realEstate/addEditRealEstate\"%>" method="post" modelAttribute="realEstateWrapperModel">
 
-		<table>
+	<table>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td>Price:</td>
+						<td>${realEstate.getPrice()}</td>
+						<td>${sessionScope.realEstateModel.getPrice()}</td>
+					</tr>
+					<tr>
+						<td>Area:</td>
+						<td>${realEstate.getArea()}</td>
+					</tr>
+					<tr>
+						<td>Structure:</td>
+						<td>${realEstate.getStructure()}</td>
+					</tr>
+					<tr>
+						<td>Location:</td>
+					<tr>
+						<td>City:</td>
+						<td>${realEstate.getCity()}</td>
+					</tr>
+					<tr>
+						<td>Street:</td>
+						<td>${realEstate.getStreet()}</td>
+					</tr>
+					<tr>
+						<td>Number:</td>
+						<td>${realEstate.getNumber()}</td>
+					</tr>
+					<tr>
+						<td>Floor:</td>
+						<td>${realEstate.getFloor()}</td>
+					</tr>
+					<tr>
+						<td>Heating:</td>
+						<td>${realEstate.getHeating()}</td>
+					</tr>
+					<tr>
+						<td>Balcony:</td>
+						<td>${realEstate.getBalcony()}</td>
+					</tr>
+					<tr>
+						<td>Type:</td>
+						<td>${realEstate.getType()}</td>
+					</tr>
+				</table>
+			</td>
+
+			<td>
+				<table>
+					<tr>
+						<td>Booked:</td>
+						<td>${realEstate.getBooked()}</td>
+					</tr>
+					<tr>
+						<td>Status:</td>
+						<td>${realEstate.getStatus()}</td>
+					</tr>
+					<tr>
+						<td>Mode:</td>
+						<td>${realEstate.getMode()}</td>
+					</tr>
+					<tr>
+						<td>Description:</td>
+						<td>${realEstate.getDescription()}</td>
+					</tr>
+					<tr>
+						<td>Rooms:</td>
+						<td>${realEstate.getRooms()}</td>
+					</tr>
+					<tr>
+						<td>Finance:</td>
+						<td>${realEstate.getFinance()}</td>
+					</tr>
+					<tr>
+						<td>Agent:</td>
+						<td>${realEstate.getAgent()}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+	</table>
+	<br />
+	<br />
+	<input type="button" onClick="location.href = '${pageContext.servletContext.contextPath}/protected/realEstate/realEstateData'" value="Enter Data" />
+
+	<hr>
+	<h3>Real Estate Photos</h3>
+
+	<form:form action="${pageContext.servletContext.contextPath}/protected/realEstate/photos" method="POST" id="photosForm">
+
+		<img alt="Image" src="${pageContext.servletContext.contextPath}/Files/profile_photo/rudar.jpg" style="width: 400px; height: 300px;" />
+		<br />
+		<br />
+		<input type="submit" name="action" value="Previous" />
+		<span>brojevi</span>
+		<input type="submit" name="action" value="Next" />
+
+		<br />
+		<br />
+		<input type="submit" name="action" value="Enter Photos" />
+	</form:form>
+
+	<hr>
+	<h3>Real Estate Documents</h3>
+
+	<form:form action="<%=request.getContextPath() + \"/Protected/documents\"%>" modelAttribute="documentsModel">
+		<table id="listOfDocuments" border="1">
 			<tr>
-				<td>
-					<table>
-
-						<tr>
-							<td>Price:</td>
-							<td><form:input path="realEstateModel.price" value="${realEstate.getPrice()}" /></td>
-						</tr>
-
-
-						<tr>
-							<td>Area:</td>
-							<td><form:input path="realEstateModel.area" value="${realEstate.getArea()}" /></td>
-						</tr>
-
-
-						<tr>
-							<td>Structure:</td>
-							<td><form:select path="realEstateModel.structure">
-									<form:option value="1">One room</form:option>
-									<form:option value="2">Two rooms</form:option>
-									<form:option value="3">Three rooms</form:option>
-									<form:option value="4">Four rooms</form:option>
-									<form:option value="5">More than four rooms</form:option>
-								</form:select></td>
-						</tr>
-
-
-						<tr>
-							<td>Location:</td>
-						<tr>
-							<td>City:</td>
-							<td><form:input path="realEstateAddressModel.city" /></td>
-							<%-- 							<td><form:input path="city" value="${realEstate.getCity()}" /></td> --%>
-						</tr>
-
-						<tr>
-							<td>Street:</td>
-							<td><form:input path="realEstateAddressModel.street" value="${realEstate.getStreet()}" /></td>
-						</tr>
-
-						<tr>
-							<td>Number:</td>
-							<td><form:input path="realEstateAddressModel.number" value="${realEstate.getNumber()}" /></td>
-						</tr>
-
-						<tr>
-							<td>Floor:</td>
-							<td><form:input path="realEstateAddressModel.floor" value="${realEstate.getFloor()}" /></td>
-						</tr>
-
-						<tr>
-							<td>Heating:</td>
-							<td><form:select path="realEstateModel.heating">
-									<form:option value="1">Central</form:option>
-									<form:option value="2">Wood</form:option>
-									<form:option value="3">Electric</form:option>
-								</form:select></td>
-						</tr>
-
-						<tr>
-							<td>Balcony:</td>
-							<td><form:checkbox path="realEstateModel.balcony" value="${realEstate.getBalcony()}" /></td>
-						</tr>
-
-						<tr>
-							<td>Type:</td>
-							<td><form:select path="realEstateModel.type">
-									<form:option value="house">House</form:option>
-									<form:option value="apartment">Apartment</form:option>
-									<form:option value="businessPlace">Business Place</form:option>
-									<form:option value="garage">Garage</form:option>
-								</form:select></td>
-						</tr>
-					</table>
-
-
-				</td>
-
-
-				<td>
-
-					<table>
-						<tr>
-							<td>Booked:</td>
-							<td><form:checkbox path="realEstateModel.booked" /></td>
-						</tr>
-
-						<tr>
-							<td>Status:</td>
-							<td><form:select path="realEstateModel.status">
-									<form:option value="underContraction">Under Construction</form:option>
-									<form:option value="finished">Finished</form:option>
-								</form:select></td>
-
-						</tr>
-
-						<tr>
-							<td>Mode:</td>
-							<td><form:select path="realEstateModel.mode">
-									<form:option value="selling">Selling</form:option>
-									<form:option value="renting">Renting</form:option>
-									<form:option value="sellingPerM2">Selling per m2</form:option>
-									<form:option value="rentingPerM2">Renting per m2</form:option>
-								</form:select></td>
-						</tr>
-
-						<tr>
-							<td>Description:</td>
-							<td><form:textarea path="realEstateModel.description" value="${realEstate.getDescription()}" /></td>
-						</tr>
-
-						<tr>
-							<td>Rooms:</td>
-							<td><form:input path="realEstateModel.rooms" value="${realEstate.getRooms()}" /></td>
-						</tr>
-
-						<tr>
-							<td />
-							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/protected/realEstate/photos"%>'" value="Photos" /></td>
-						</tr>
-
-						<tr>
-							<td />
-							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/protected/realEstate/documents"%>'" value="Documents" /></td>
-						</tr>
-
-						<tr>
-							<td />
-							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/protected/realEstate/plan"%>'" value="Plan" /></td>
-						</tr>
-
-						<tr>
-							<td>Finance:</td>
-							<td><form:input path="realEstateModel.finance" value="${realEstate.getFinance()}" /></td>
-						</tr>
-
-						<tr>
-							<td>Agent:</td>
-							<td><form:select path="realEstateModel.userID">
-									<form:option value="1">Agent1</form:option>
-									<form:option value="2">Agent1</form:option>
-									<form:option value="2">Agent1</form:option>
-									<form:option value="2">Agent1</form:option>
-								</form:select></td>
-						</tr>
-
-					</table>
-				</td>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Description</th>
+				<th>Date</th>
+				<th>Location</th>
 			</tr>
 
-			<tr>
-				<td><input type="submit" name="action" value="Save" /></td>
-				<td><input type="submit" name="action" value="Close" /></td>
-			</tr>
+			<c:forEach var="item" items="${documents}">
+				<tr>
+					<td>${item.getName()}</td>
+					<td>${item.getType()}</td>
+					<td>${item.getDescription()}</td>
+					<td>${item.getDate()}</td>
+					<td>${item.getLocation()}</td>
+				</tr>
+			</c:forEach>
 		</table>
+		<br />
+		<br />
+		<input type="submit" value="Enter Documents" name="edit" />
 	</form:form>
 
 </body>

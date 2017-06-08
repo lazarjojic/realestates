@@ -49,8 +49,8 @@ body {
 
 			<li>Agencies
 				<ul>
-					<li><a href="<%=request.getContextPath() + "/protected/Agency/addEditAgency"%>">Add Agency</a></li>
-					<li><a href="<%=request.getContextPath() + "/protected/Agency/searchAgencies"%>">Search Agencies</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/agency/addEditAgency"%>">Add Agency</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/agency/searchAgencies"%>">Search Agencies</a></li>
 				</ul>
 			</li>
 		</ul>

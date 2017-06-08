@@ -20,8 +20,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 @SessionAttributes(value = { "photos", "documents", "positions", "sketches" })
 @Controller
@@ -81,8 +82,10 @@ public class PhotosController {
 	}
 
 	@RequestMapping(value = "/protected/realEstate/photos", method = RequestMethod.POST)
-	public String submitPage(HttpServletRequest request, HttpServletResponse response, SessionStatus sessionStatus, HttpSession session, Model model) throws IOException, ServletException {
-		String action = request.getParameter("action");
+	public String submitPage(@RequestParam("action") String action, @RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response,
+			HttpSession session, Model model) throws IOException, ServletException {
+
+		// String action = request.getParameter("action");
 		switch (action) {
 
 		case "Add":
@@ -124,7 +127,7 @@ public class PhotosController {
 				}
 			}
 			return "kurac";
-			
+
 		case "Close":
 			session.removeAttribute("photosTemp");
 			session.removeAttribute("documentsTemp");

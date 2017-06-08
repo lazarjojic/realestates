@@ -17,7 +17,7 @@ public class EditAgencyController {
 	@Autowired
 	private AgencyService agencyService;
 
-	@RequestMapping(value = "/Protected/editAgency", method = RequestMethod.POST)
+	@RequestMapping(value = "/protected/editAgency", method = RequestMethod.POST)
 	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
 		String action = request.getParameter("action");
 		if (action.equals("close")) {
@@ -30,13 +30,13 @@ public class EditAgencyController {
 			String phone = request.getParameter("phone");
 			AgencyEntity agency = new AgencyEntity(name, pib, director, address, phone);
 			agencyService.save(agency);
-			return "/Protected/EditAgency";
+			return "/protected/EditAgency";
 		}
 	}
 
-	@RequestMapping(value = "/Protected/editAgency", method = RequestMethod.GET)
+	@RequestMapping(value = "/protected/editAgency", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/EditAgency";
+		return "/protected/EditAgency";
 	}
 
 }

@@ -10,7 +10,7 @@
 <body>
 
 	<%-- 	<form:form action="<%=request.getContextPath() + \"/Protected/Agency/viewAgency\"%>" modelAttribute="viewAgency" method="POST"> --%>
-	<form action="<%=request.getContextPath() + "/Protected/Agency/viewAgency"%>" method="POST">
+	<form action="<%=request.getContextPath() + "/protected/agency/viewAgency"%>" method="POST">
 		<table>
 			<tr>
 				<td>Name:</td>

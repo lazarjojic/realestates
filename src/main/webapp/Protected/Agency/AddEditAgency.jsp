@@ -10,7 +10,9 @@
 	<h1>Dodavanje agencije</h1>
 
 
-	<form:form action="<%=request.getContextPath() +\"/Protected/addEditAgency\"%>" method="post" modelAttribute="agency">
+<%-- 	<form:form action="<%=request.getContextPath() +\"/protected/agency/addEditAgency\"%>" method="post" modelAttribute="agency"> --%>
+	<form:form action="${pageContext.servletContext.contextPath}/protected/agency/addEditAgency" method="post" modelAttribute="agency">
+	
 		<table>
 			<tr>
 				<td>Name:</td>

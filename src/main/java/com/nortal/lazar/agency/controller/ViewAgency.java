@@ -17,16 +17,16 @@ import com.nortal.lazar.agency.model.AgencyModel;
 @Controller
 public class ViewAgency {
 
-	@RequestMapping(value = "/Protected/Agency/viewAgency", method = RequestMethod.POST)
+	@RequestMapping(value = "/protected/agency/viewAgency", method = RequestMethod.POST)
 	public String submitViewAgencyPage(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("agencyToView") AgencyModel agencyToView, Model model, SessionStatus sessionStatus) {
 		model.addAttribute("agency", agencyToView);
 		String action = request.getParameter("action");
 		switch (action) {
 		case "Edit":
-			return "/Protected/Agency/AddEditAgency";
+			return "/protected/agency/AddEditAgency";
 		case "Close":
 			sessionStatus.setComplete();
-			return "/Protected/Agency/SearchAgencies";
+			return "/protected/agency/SearchAgencies";
 		case "Delete":
 			return null;
 		default:

@@ -23,7 +23,7 @@ tr {
 </head>
 <body>
 
-	<form:form action="<%=request.getContextPath() + \"/Protected/Agency/searchAgencies\"%>" modelAttribute="agency" method="POST">
+	<form:form action="<%=request.getContextPath() + \"/protected/agency/searchAgencies\"%>" modelAttribute="agency" method="POST">
 		<table>
 			<tr>
 				<td>
