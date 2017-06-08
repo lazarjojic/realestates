@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form:form action="<%=request.getContextPath() + \"/Protected/addRealEstate\"%>" method="post" path="addEditRealEstateForm" modelAttribute="realEstateModel">
+	<form:form action="<%=request.getContextPath() + \"/Protected/addRealEstate\"%>" method="post" path="addEditRealEstateForm" modelAttribute="realEstateWrapperModel">
 
 		<table>
 			<tr>
@@ -17,13 +17,13 @@
 
 						<tr>
 							<td>Price:</td>
-							<td><form:input path="price" value="${realEstate.getPrice()}" /></td>
+							<td><form:input path="realEstateModelllll.price" value="${realEstate.getPrice()}" /></td>
 						</tr>
 
 
 						<tr>
 							<td>Area:</td>
-							<td><form:input path="area" value="${realEstate.getArea()}" /></td>
+							<td><form:input path="realEstateModel.area" value="${realEstate.getArea()}" /></td>
 						</tr>
 
 
@@ -43,7 +43,8 @@
 							<td>Location:</td>
 						<tr>
 							<td>City:</td>
-							<td><form:input path="city" value="${realEstate.getCity()}" /></td>
+							<td><form:input path="city"  /></td>
+<%-- 							<td><form:input path="city" value="${realEstate.getCity()}" /></td> --%>
 						</tr>
 
 						<tr>
