@@ -41,40 +41,40 @@ body {
 		<ul class="nav">
 			<li>Accounts
 				<ul>
-					<li><a href="<%=request.getContextPath() + "/Protected/account"%>">Create Account</a></li>
-					<li><a href="<%=request.getContextPath() + "/Protected/searchAccounts"%>">Search Accounts</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/account"%>">Create Account</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/searchAccounts"%>">Search Accounts</a></li>
 
 				</ul>
 			</li>
 
 			<li>Agencies
 				<ul>
-					<li><a href="<%=request.getContextPath() + "/Protected/Agency/addEditAgency"%>">Add Agency</a></li>
-					<li><a href="<%=request.getContextPath() + "/Protected/Agency/searchAgencies"%>">Search Agencies</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/Agency/addEditAgency"%>">Add Agency</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/Agency/searchAgencies"%>">Search Agencies</a></li>
 				</ul>
 			</li>
 		</ul>
 	</c:if>
-	
+
 	<c:if test="${sessionScope.user.status != 'agent'}">
 		<ul>
 			<li>Real Estates
 				<ul>
-					<li><a href="<%=request.getContextPath() + "/Protected/RealEstate/addEditRealEstate"%>">Add Real Estate</a></li>
-					<li><a href="<%=request.getContextPath() + "/Protected/RealEstate/searchRealEstates"%>">Search Real Estates</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/realEstate/addEditRealEstate"%>">Add Real Estate</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/realEstate/searchRealEstates"%>">Search Real Estates</a></li>
 				</ul>
 			</li>
 		</ul>
 	</c:if>
-	
+
 	<c:if test="${sessionScope.user.status == 'agent'}">
 		<ul>
-			<li><a href="<%=request.getContextPath() + "/Protected/RealEstate/searchRealEstates"%>">Search Real Estates</a></li>
+			<li><a href="<%=request.getContextPath() + "/protected/realEstate/searchRealEstates"%>">Search Real Estates</a></li>
 		</ul>
 	</c:if>
 
 	<ul>
-		<li><a href="<%=request.getContextPath() + "/Protected/profile"%>">Profile</a></li>
+		<li><a href="<%=request.getContextPath() + "/protected/profile"%>">Profile</a></li>
 		<li><a href="#">Help</a></li>
 		<li><a href="#">Logout</a></li>
 		<li><a href="#">About</a></li>

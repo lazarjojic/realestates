@@ -41,7 +41,7 @@ public class LoginController {
 		
 		this.getClass().getClassLoader().getResourceAsStream("korali.jpg");
 		if (isUserLogedin(request)) {
-			return new ModelAndView("Protected/Home");
+			return new ModelAndView("protected/Home");
 		} else {
 			ModelAndView mav = new ModelAndView("Login");
 			mav.addObject("login", new LoginModel());
@@ -75,7 +75,7 @@ public class LoginController {
 			return "Login";
 		} else {
 			setSessionData(request, userEntity);
-			return "/Protected/Home";
+			return "/protected/Home";
 		}
 	}
 

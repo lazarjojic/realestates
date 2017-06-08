@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form:form action="<%=request.getContextPath() + \"/Protected/addRealEstate\"%>" method="post" path="addEditRealEstateForm" modelAttribute="realEstateWrapperModel">
+	<form:form action="<%=request.getContextPath() + \"/protected/realEstate/addEditRealEstate\"%>" method="post" modelAttribute="realEstateWrapperModel">
 
 		<table>
 			<tr>
@@ -17,7 +17,7 @@
 
 						<tr>
 							<td>Price:</td>
-							<td><form:input path="realEstateModelllll.price" value="${realEstate.getPrice()}" /></td>
+							<td><form:input path="realEstateModel.price" value="${realEstate.getPrice()}" /></td>
 						</tr>
 
 
@@ -29,7 +29,7 @@
 
 						<tr>
 							<td>Structure:</td>
-							<td><form:select path="structure">
+							<td><form:select path="realEstateModel.structure">
 									<form:option value="1">One room</form:option>
 									<form:option value="2">Two rooms</form:option>
 									<form:option value="3">Three rooms</form:option>
@@ -43,28 +43,28 @@
 							<td>Location:</td>
 						<tr>
 							<td>City:</td>
-							<td><form:input path="city"  /></td>
-<%-- 							<td><form:input path="city" value="${realEstate.getCity()}" /></td> --%>
+							<td><form:input path="realEstateAddressModel.city" /></td>
+							<%-- 							<td><form:input path="city" value="${realEstate.getCity()}" /></td> --%>
 						</tr>
 
 						<tr>
 							<td>Street:</td>
-							<td><form:input path="street" value="${realEstate.getStreet()}" /></td>
+							<td><form:input path="realEstateAddressModel.street" value="${realEstate.getStreet()}" /></td>
 						</tr>
 
 						<tr>
 							<td>Number:</td>
-							<td><form:input path="number" value="${realEstate.getNumber()}" /></td>
+							<td><form:input path="realEstateAddressModel.number" value="${realEstate.getNumber()}" /></td>
 						</tr>
 
 						<tr>
 							<td>Floor:</td>
-							<td><form:input path="floor" value="${realEstate.getFloor()}" /></td>
+							<td><form:input path="realEstateAddressModel.floor" value="${realEstate.getFloor()}" /></td>
 						</tr>
 
 						<tr>
 							<td>Heating:</td>
-							<td><form:select path="heating">
+							<td><form:select path="realEstateModel.heating">
 									<form:option value="1">Central</form:option>
 									<form:option value="2">Wood</form:option>
 									<form:option value="3">Electric</form:option>
@@ -73,12 +73,12 @@
 
 						<tr>
 							<td>Balcony:</td>
-							<td><form:checkbox path="balcony" value="${realEstate.getBalcony()}" /></td>
+							<td><form:checkbox path="realEstateModel.balcony" value="${realEstate.getBalcony()}" /></td>
 						</tr>
 
 						<tr>
 							<td>Type:</td>
-							<td><form:select path="type">
+							<td><form:select path="realEstateModel.type">
 									<form:option value="house">House</form:option>
 									<form:option value="apartment">Apartment</form:option>
 									<form:option value="businessPlace">Business Place</form:option>
@@ -96,12 +96,12 @@
 					<table>
 						<tr>
 							<td>Booked:</td>
-							<td><form:checkbox path="booked" /></td>
+							<td><form:checkbox path="realEstateModel.booked" /></td>
 						</tr>
 
 						<tr>
 							<td>Status:</td>
-							<td><form:select path="status">
+							<td><form:select path="realEstateModel.status">
 									<form:option value="underContraction">Under Construction</form:option>
 									<form:option value="finished">Finished</form:option>
 								</form:select></td>
@@ -110,7 +110,7 @@
 
 						<tr>
 							<td>Mode:</td>
-							<td><form:select path="mode">
+							<td><form:select path="realEstateModel.mode">
 									<form:option value="selling">Selling</form:option>
 									<form:option value="renting">Renting</form:option>
 									<form:option value="sellingPerM2">Selling per m2</form:option>
@@ -120,37 +120,37 @@
 
 						<tr>
 							<td>Description:</td>
-							<td><form:textarea path="description" value="${realEstate.getDescription()}" /></td>
+							<td><form:textarea path="realEstateModel.description" value="${realEstate.getDescription()}" /></td>
 						</tr>
 
 						<tr>
 							<td>Rooms:</td>
-							<td><form:input path="rooms" value="${realEstate.getRooms()}" /></td>
+							<td><form:input path="realEstateModel.rooms" value="${realEstate.getRooms()}" /></td>
 						</tr>
 
 						<tr>
 							<td />
-							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/Protected/RealEstate/photos"%>'" value="Photos"/></td>
+							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/protected/realEstate/photos"%>'" value="Photos" /></td>
 						</tr>
 
 						<tr>
 							<td />
-							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/Protected/RealEstate/documents"%>'" value="Documents" /></td>
+							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/protected/realEstate/documents"%>'" value="Documents" /></td>
 						</tr>
 
 						<tr>
 							<td />
-							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/Protected/RealEstate/plan"%>'" value="Plan" /></td>
+							<td><input type="button" onClick="location.href = '<%=request.getContextPath() + "/protected/realEstate/plan"%>'" value="Plan" /></td>
 						</tr>
 
 						<tr>
 							<td>Finance:</td>
-							<td><form:input path="finance" value="${realEstate.getFinance()}" /></td>
+							<td><form:input path="realEstateModel.finance" value="${realEstate.getFinance()}" /></td>
 						</tr>
 
 						<tr>
 							<td>Agent:</td>
-							<td><form:select path="mode">
+							<td><form:select path="realEstateModel.userID">
 									<form:option value="1">Agent1</form:option>
 									<form:option value="2">Agent1</form:option>
 									<form:option value="2">Agent1</form:option>

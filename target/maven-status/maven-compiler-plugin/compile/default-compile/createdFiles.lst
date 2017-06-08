@@ -1,4 +1,5 @@
 com\nortal\lazar\agency\entity\AgencyEntity.class
+com\nortal\lazar\realestate\model\RealEstateWrapperModel.class
 com\nortal\lazar\realestate\model\DocumentModel.class
 com\nortal\lazar\user\controller\AccountController.class
 com\nortal\lazar\agency\model\AgencyModel.class

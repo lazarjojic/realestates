@@ -18,15 +18,15 @@ public class RealEstateController  {
 	private AgencyService agencyService;
 
 	
-	@RequestMapping(value = "/Protected/realEstate", method = RequestMethod.POST)
+	@RequestMapping(value = "/protected/realEstate", method = RequestMethod.POST)
 	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
-		return "/Protected/RealEstate";
+		return "/protected/RealEstate";
 	}
 
 	
-	@RequestMapping(value = "/Protected/realEstate", method = RequestMethod.GET)
+	@RequestMapping(value = "/protected/realEstate", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/RealEstate";
+		return "/protected/RealEstate";
 	}
 
 }

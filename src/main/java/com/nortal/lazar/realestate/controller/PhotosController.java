@@ -1,10 +1,20 @@
 package com.nortal.lazar.realestate.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +46,7 @@ public class PhotosController {
 	// }
 	// }
 
-	@RequestMapping(value = "/Protected/RealEstate/photos", method = RequestMethod.GET)
+	@RequestMapping(value = "/protected/realEstate/photos", method = RequestMethod.GET)
 	public String openPage(HttpSession session, Model model) {
 
 		if (session.getAttribute("photos") != null) {
@@ -67,19 +77,60 @@ public class PhotosController {
 			model.addAttribute("sketches", sketches);
 		}
 
-		return "/Protected/RealEstate/Photos";
+		return "/protected/realEstate/Photos";
 	}
 
-	@RequestMapping(value = "/Protected/RealEstate/photos", method = RequestMethod.POST)
-	public String submitPage(HttpServletRequest request, SessionStatus sessionStatus, HttpSession session, Model model) {
+	@RequestMapping(value = "/protected/realEstate/photos", method = RequestMethod.POST)
+	public String submitPage(HttpServletRequest request, HttpServletResponse response, SessionStatus sessionStatus, HttpSession session, Model model) throws IOException, ServletException {
 		String action = request.getParameter("action");
 		switch (action) {
+
+		case "Add":
+			final String path = request.getParameter("location");
+			final Part filePart = request.getPart("file");
+			final String fileName = getFileName(filePart);
+			final PrintWriter writer = response.getWriter();
+			OutputStream out = null;
+			InputStream filecontent = null;
+			try {
+
+				out = new FileOutputStream(new File(path + File.separator + fileName));
+				filecontent = filePart.getInputStream();
+
+				int read = 0;
+				final byte[] bytes = new byte[1024];
+
+				while ((read = filecontent.read(bytes)) != -1) {
+					out.write(bytes, 0, read);
+				}
+				writer.println("New file " + fileName + " created at " + path);
+
+			} catch (FileNotFoundException fne) {
+				writer.println("You either did not specify a file to upload or are " + "trying to upload a file to a protected or nonexistent " + "location.");
+				writer.println("<br/> ERROR: " + fne.getMessage());
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				if (out != null) {
+					out.close();
+				}
+				if (filecontent != null) {
+					filecontent.close();
+				}
+				if (writer != null) {
+					writer.close();
+				}
+			}
+			return "kurac";
+			
 		case "Close":
 			session.removeAttribute("photosTemp");
 			session.removeAttribute("documentsTemp");
 			session.removeAttribute("positionsTemp");
 			session.removeAttribute("sketchesTemp");
-			return "/Protected/RealEstate";
+			return "/protected/realEstate/AddEditRealEstate";
 		case "Save":
 			List<String> photos = (List<String>) session.getAttribute("photos");
 			List<String> documents = (List<String>) session.getAttribute("documents");
@@ -90,15 +141,25 @@ public class PhotosController {
 			documents = (List<String>) session.getAttribute("documentsTemp");
 			positions = (List<String>) session.getAttribute("positionsTemp");
 			sketchesTemp = (List<String>) session.getAttribute("sketchesTemp");
-			
+
 			session.removeAttribute("photosTemp");
 			session.removeAttribute("documentsTemp");
 			session.removeAttribute("positionsTemp");
 			session.removeAttribute("sketchesTemp");
-			return "/Protected/RealEstate";
+			return "/protected/realEstate/AddEditRealEstate";
 		default:
 			return null;
 		}
 
+	}
+
+	private String getFileName(final Part part) {
+		final String partHeader = part.getHeader("content-disposition");
+		for (String content : part.getHeader("content-disposition").split(";")) {
+			if (content.trim().startsWith("filename")) {
+				return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+			}
+		}
+		return null;
 	}
 }

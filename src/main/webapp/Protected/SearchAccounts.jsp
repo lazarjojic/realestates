@@ -49,7 +49,7 @@
 						<tr>
 							<td>Username:</td>
 							<td><input type="text" name="username" />
-						</tr>						
+						</tr>
 
 						<tr>
 							<td />

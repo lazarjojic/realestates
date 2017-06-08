@@ -17,11 +17,11 @@ public class SearchRealEstatesController {
 	@Autowired
 	private AgencyService agencyService;
 
-	@RequestMapping(value = "/Protected/searchRealEstates", method = RequestMethod.POST)
+	@RequestMapping(value = "/protected/searchRealEstates", method = RequestMethod.POST)
 	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
 		String action = request.getParameter("action");
 		if (action.equals("Show")) {
-			return "/Protected/RealEstate";
+			return "/protected/RealEstate";
 		} else if (action.equals("Edit")) {
 			String name = request.getParameter("name");
 			String pib = request.getParameter("pib");
@@ -30,17 +30,17 @@ public class SearchRealEstatesController {
 			String phone = request.getParameter("phone");
 			AgencyEntity agency = new AgencyEntity(name, pib, director, address, phone);
 			agencyService.save(agency);
-			return "/Protected/EditRealEstate";
+			return "/protected/EditRealEstate";
 		} else if (action.equals("Delete")) {
 			return null;
 		} else {
-			return "/Protected/SearchRealEstates";
+			return "/protected/SearchRealEstates";
 		}
 	}
 
-	@RequestMapping(value = "/Protected/searchRealEstates", method = RequestMethod.GET)
+	@RequestMapping(value = "/protected/searchRealEstates", method = RequestMethod.GET)
 	public String openPage() {
-		return "/Protected/SearchRealEstates";
+		return "/protected/SearchRealEstates";
 	}
 
 }

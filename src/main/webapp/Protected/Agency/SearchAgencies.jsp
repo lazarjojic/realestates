@@ -106,14 +106,12 @@ tr {
 				</td>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="action" value="Show" /><input type="submit" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> 
-				<input type="submit" name="action" value="Close" />
-				<input type="text" id="selectedIndex" name="selectedIndex" style="display: none" />
-				</td>
+				<td><input type="submit" name="action" value="Show" /><input type="submit" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="submit" name="action" value="Close" />
+					<input type="text" id="selectedIndex" name="selectedIndex" style="display: none" /></td>
 			</tr>
 		</table>
 	</form:form>
-	
+
 
 
 

@@ -10,8 +10,8 @@
 <body>
 
 
-	<form:form action="<%=request.getContextPath() + \"/Protected/Photos\"%>" id="photosForm">
-		<img alt="govno" src="/<%=request.getContextPath()%>/Files/profile_photo/rudar.jpg" style="width: 400px; height: 300px;">
+	<form:form action="<%=request.getContextPath() + \"/protected/realEstate/photos\"%>" method="post" enctype="multipart/form-data" id="photosForm">
+		<img alt="Image" src="${pageContext.servletContext.contextPath}/Files/profile_photo/rudar.jpg" style="width: 400px; height: 300px;">
 		<br />
 		<br />
 		<input type="submit" name="previous" value="Previous">
@@ -22,6 +22,10 @@
 		<br />
 		<br />
 		<c:if test="${sessionScope.user.status != 'agent'}">
+		
+		File:
+            <input type="file" name="file" id="file" />
+			<br />
 		
 			Location: <input type="text" name="location" />
 			<input type="submit" name="browse" value="Browse" />

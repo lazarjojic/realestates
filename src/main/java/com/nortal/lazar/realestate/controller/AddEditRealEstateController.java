@@ -13,17 +13,17 @@ import com.nortal.lazar.realestate.model.RealEstateWrapperModel;
 @Controller
 public class AddEditRealEstateController {
 
-	@RequestMapping(value = "/Protected/RealEstate/addEditRealEstate", method = RequestMethod.GET)
-	public String openPage(Model model) {
-		RealEstateWrapperModel realEstateWrapperModel = new RealEstateWrapperModel();
-		model.addAttribute("realEstateWrapperModel", realEstateWrapperModel);		
-		return "/Protected/RealEstate/AddEditRealEstate";
+	@RequestMapping(value = "/protected/realEstate/addEditRealEstate", method = RequestMethod.GET)
+	public String openPage(Model model, @ModelAttribute("realEstateWrapperModel") RealEstateWrapperModel realEstateWrapperModel) {
+//		RealEstateWrapperModel realEstateWrapperModel = new RealEstateWrapperModel();
+//		model.addAttribute("realEstateWrapperModel", realEstateWrapperModel);		
+		return "/protected/realEstate/AddEditRealEstate";
 	}
 	
-	@RequestMapping(value = "/Protected/RealEstate/addEditRealEstate", method = RequestMethod.POST)
+	@RequestMapping(value = "/protected/realEstate/addEditRealEstate", method = RequestMethod.POST)
 	public String submitPage(@ModelAttribute("realEstateWrapperModel") RealEstateWrapperModel realEstateWrapperModel) {
 		
-		return "/Protected/RealEstate/AddEditRealEstate";
+		return "/protected/realEstate/AddEditRealEstate";
 	}
 
 }

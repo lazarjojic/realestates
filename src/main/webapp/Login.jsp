@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<%-- 	<c:import url="<%=request.getContextPath() + \"/Protected/header.jsp\"%>" /> --%>
+	<%-- 	<c:import url="<%=request.getContextPath() + \"/protected/header.jsp\"%>" /> --%>
 
 	<form:form action="<%=request.getContextPath() + \"/login\"%>" modelAttribute="login" method="POST">
 		<form:errors path="*" cssClass="errorblock" element="div" />
