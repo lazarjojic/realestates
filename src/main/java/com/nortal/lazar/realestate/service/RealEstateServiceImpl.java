@@ -3,11 +3,13 @@ package com.nortal.lazar.realestate.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.nortal.lazar.realestate.entity.RealEstateEntity;
 import com.nortal.lazar.realestate.repository.RealEstateRepository;
 
+@Service
 public class RealEstateServiceImpl implements RealEstateService {
 
 	@Autowired

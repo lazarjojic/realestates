@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,7 +17,7 @@
 					<table>
 						<tr>
 							<td>Price:</td>
-							<td><form:input path="realEstateModel.price" value="fsdfds" /></td>
+							<td><form:input path="realEstateModel.price" value="${sessionScope.realEstateModel.getPrice()}" /></td>
 						</tr>
 						<tr>
 							<td>Area:</td>
@@ -132,11 +133,13 @@
 						<tr>
 							<td>Agent:</td>
 							<td><form:select path="realEstateModel.userID">
-									<form:option value="1">Agent1</form:option>
-									<form:option value="2">Agent1</form:option>
-									<form:option value="2">Agent1</form:option>
-									<form:option value="2">Agent1</form:option>
-								</form:select></td>
+									<c:forEach var="item" items="${agents}">
+										<form:option value="${item[0]}">${item[1]}</form:option>
+										<form:option value="2">Agent1</form:option>
+									</c:forEach>									
+								</form:select></td>	
+							
+
 						</tr>
 
 					</table>

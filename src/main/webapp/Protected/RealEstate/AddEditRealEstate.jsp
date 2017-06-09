@@ -18,47 +18,46 @@
 			<td>
 				<table>
 					<tr>
-						<td>Price:</td>
-						<td>${realEstate.getPrice()}</td>
-						<td>${sessionScope.realEstateModel.getPrice()}</td>
+						<td>Price:</td>						
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getPrice()}</td>
 					</tr>
 					<tr>
 						<td>Area:</td>
-						<td>${realEstate.getArea()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getArea()}</td>
 					</tr>
 					<tr>
 						<td>Structure:</td>
-						<td>${realEstate.getStructure()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getStructure()}</td>
 					</tr>
 					<tr>
 						<td>Location:</td>
 					<tr>
 						<td>City:</td>
-						<td>${realEstate.getCity()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateAddressModel().getCity()}</td>
 					</tr>
 					<tr>
 						<td>Street:</td>
-						<td>${realEstate.getStreet()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateAddressModel().getStreet()}</td>
 					</tr>
 					<tr>
 						<td>Number:</td>
-						<td>${realEstate.getNumber()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateAddressModel().getNumber()}</td>
 					</tr>
 					<tr>
 						<td>Floor:</td>
-						<td>${realEstate.getFloor()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateAddressModel().getFloor()}</td>
 					</tr>
 					<tr>
 						<td>Heating:</td>
-						<td>${realEstate.getHeating()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getHeating()}</td>
 					</tr>
 					<tr>
 						<td>Balcony:</td>
-						<td>${realEstate.getBalcony()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getBalcony()}</td>
 					</tr>
 					<tr>
 						<td>Type:</td>
-						<td>${realEstate.getType()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getType()}</td>
 					</tr>
 				</table>
 			</td>
@@ -67,31 +66,31 @@
 				<table>
 					<tr>
 						<td>Booked:</td>
-						<td>${realEstate.getBooked()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getBooked()}</td>
 					</tr>
 					<tr>
 						<td>Status:</td>
-						<td>${realEstate.getStatus()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getStatus()}</td>
 					</tr>
 					<tr>
 						<td>Mode:</td>
-						<td>${realEstate.getMode()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getMode()}</td>
 					</tr>
 					<tr>
 						<td>Description:</td>
-						<td>${realEstate.getDescription()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getDescription()}</td>
 					</tr>
 					<tr>
 						<td>Rooms:</td>
-						<td>${realEstate.getRooms()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getRooms()}</td>
 					</tr>
 					<tr>
 						<td>Finance:</td>
-						<td>${realEstate.getFinance()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getFinance()}</td>
 					</tr>
 					<tr>
 						<td>Agent:</td>
-						<td>${realEstate.getAgent()}</td>
+						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getAgent()}</td>
 					</tr>
 				</table>
 			</td>

@@ -57,7 +57,7 @@ public class UserRepositoryImpl implements UserRepository {
 	// }
 
 	public UserEntity getUser(String username) {
-		Query query = em.createQuery("select u from UserEntity as u where username=:username");
+		Query query = em.createQuery("select user from UserEntity as user where username=:username");
 		query.setParameter("username", username);
 		List<UserEntity> resultList = query.getResultList();
 
@@ -81,7 +81,7 @@ public class UserRepositoryImpl implements UserRepository {
 	// }
 
 	@Override
-	public void updatePassword (int ID, String password) {
+	public void updatePassword(int ID, String password) {
 		UserEntity userToUpdate = em.find(UserEntity.class, ID);
 		userToUpdate.setPassword(password);
 	}
@@ -89,7 +89,14 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public void updateUser(UserEntity userEntity) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public List<Object[]> getUsernames(String status) {
+		Query query = em.createQuery("select user.id, user.username from UserEntity as user where status=:status");
+		query.setParameter("status", status);
+		return (List<Object[]>) query.getResultList();
 	}
 
 }

@@ -17,7 +17,7 @@ import com.nortal.lazar.user.model.UserModel;
 import com.nortal.lazar.user.service.UserService;
 
 @Controller
-public class CreateAccountController {
+public class AddEditAccountController {
 
 	@Autowired
 	private AgencyService agencyService;
@@ -25,7 +25,7 @@ public class CreateAccountController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/Protected/createAccount")
+	@RequestMapping(method = RequestMethod.GET, value = "/Protected/addEditAccount")
 	public String openKreiranjeNaloga(Model model) {
 		List<Object[]> agencies = agencyService.getAgenciesNames();
 		model.addAttribute("agencies", agencies);
@@ -33,7 +33,7 @@ public class CreateAccountController {
 		return "/Protected/CreateAccount";
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/Protected/createAccount")
+	@RequestMapping(method = RequestMethod.POST, value = "/Protected/addEditAccount")
 	public String doPost(HttpServletRequest request, HttpServletResponse response, Model model) {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");

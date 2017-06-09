@@ -36,6 +36,22 @@
 
 	<bean id="agencyService" class="com.nortal.lazar.agency.service.AgencyServiceImpl" />
 	<bean id="userService" class="com.nortal.lazar.user.service.UserServiceImpl" />
+	<bean id="documentService" class="com.nortal.lazar.realestate.service.DocumentServiceImpl" />
+	<bean id="photoService" class="com.nortal.lazar.realestate.service.PhotoServiceImpl" />
+	<bean id="realEstateService"
+		class="com.nortal.lazar.realestate.service.RealEstateServiceImpl" />
+	<bean id="realEstateAddressService"
+		class="com.nortal.lazar.realestate.service.RealEstateAddressServiceImpl" />
+
+	<bean id="userRepository" class="com.nortal.lazar.user.repository.UserRepositoryImpl" />
+	<bean id="realEstateRepository"
+		class="com.nortal.lazar.realestate.repository.RealEstateRepositoryImpl" />
+	<bean id="realEstateAddressRepository"
+		class="com.nortal.lazar.realestate.repository.RealEstateAddressRepositoryImpl" />
+	<bean id="documentsRepository"
+		class="com.nortal.lazar.realestate.repository.DocumentRepositoryImpl" />
+	<bean id="photoRepository"
+		class="com.nortal.lazar.realestate.repository.PhotoRepositoryImpl" />
 
 
 
