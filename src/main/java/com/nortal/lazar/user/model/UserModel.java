@@ -1,12 +1,15 @@
 package com.nortal.lazar.user.model;
 
+import java.io.Serializable;
+
 import com.nortal.lazar.user.entity.UserEntity;
 
 /*
  * Model class based on User table and agency name as additional information
  */
-public class UserModel {
-
+public class UserModel implements Serializable{
+	private static final long serialVersionUID = 7655488066102808080L;
+	
 	private int ID;
 	private String firstName;
 	private String lastName;
@@ -18,11 +21,11 @@ public class UserModel {
 	private String password;
 
 	public UserModel(UserEntity userEntity) {
-		this.ID = userEntity.getId();
+		this.ID = userEntity.getID();
 		this.firstName = userEntity.getFirstName();
 		this.lastName = userEntity.getLastName();
 		this.phone = userEntity.getPhone();
-		this.agencyID = userEntity.getAgency_id();
+		this.agencyID = userEntity.getAgencyID();
 		this.status = userEntity.getStatus();
 		this.username = userEntity.getUsername();
 		this.password = userEntity.getPassword();

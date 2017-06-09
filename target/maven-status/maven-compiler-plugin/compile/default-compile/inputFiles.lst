@@ -14,6 +14,7 @@ D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\serv
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\controller\ViewAgency.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\model\RealEstateModel.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\repository\RealEstateAddressRepository.java
+D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\controller\AddEditAccountController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\model\LoginModel.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\entity\UserEntity.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\entity\AgencyEntity.java
@@ -22,7 +23,6 @@ D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\serv
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\controller\DocumentsController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\service\PhotoServiceImpl.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\model\AgencyModel.java
-D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\controller\CreateAccountController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\service\UserService.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\repository\AgencyRepositoryImpl.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\repository\DocumentRepository.java

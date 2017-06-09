@@ -13,7 +13,7 @@ import com.nortal.lazar.user.model.UserModel;
 public class UserEntity {
 	@Id
 	@GeneratedValue
-	private int id;
+	private int ID;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -39,13 +39,33 @@ public class UserEntity {
 	public UserEntity() {
 
 	}
-
-	public int getId() {
-		return id;
+	
+	public UserEntity (UserModel userModel) {
+		this.firstName = userModel.getFirstName();
+		this.lastName = userModel.getLastName();
+		this.phone = userModel.getPhone();
+		this.agencyID = userModel.getID();
+		this.status = userModel.getStatus();
+		this.username = userModel.getUsername();
+		this.password = userModel.getPassword();
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public UserEntity(String firstName, String lastName, String phone, int agencyID, String status, String username, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.agencyID = agencyID;
+		this.status = status;
+		this.username = username;
+		this.password = password;
+	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
 	public String getFirstName() {
@@ -72,11 +92,11 @@ public class UserEntity {
 		this.phone = phone;
 	}
 
-	public int getAgency_id() {
+	public int getAgencyID() {
 		return agencyID;
 	}
 
-	public void setAgency_id(int agencyID) {
+	public void setAgencyID(int agencyID) {
 		this.agencyID = agencyID;
 	}
 
@@ -103,25 +123,7 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public UserEntity(String firstName, String lastName, String phone, int agencyID, String status, String username, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phone = phone;
-		this.agencyID = agencyID;
-		this.status = status;
-		this.username = username;
-		this.password = password;
-	}
 	
-	public UserEntity (UserModel userModel) {
-		this.firstName = userModel.getFirstName();
-		this.lastName = userModel.getLastName();
-		this.phone = userModel.getPhone();
-		this.agencyID = userModel.getID();
-		this.status = userModel.getStatus();
-		this.username = userModel.getUsername();
-		this.password = userModel.getPassword();
-	}
+	
 
 }

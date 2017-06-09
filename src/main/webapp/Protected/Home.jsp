@@ -41,8 +41,8 @@ body {
 		<ul class="nav">
 			<li>Accounts
 				<ul>
-					<li><a href="<%=request.getContextPath() + "/protected/user/account"%>">Create Account</a></li>
-					<li><a href="<%=request.getContextPath() + "/protected/searchAccounts"%>">Search Accounts</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/user/addEditAccount"%>">Create Account</a></li>
+					<li><a href="<%=request.getContextPath() + "/protected/user/searchAccounts"%>">Search Accounts</a></li>
 
 				</ul>
 			</li>
