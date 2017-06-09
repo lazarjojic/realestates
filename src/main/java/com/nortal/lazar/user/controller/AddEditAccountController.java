@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nortal.lazar.agency.service.AgencyService;
-import com.nortal.lazar.model.LoginModel;
 import com.nortal.lazar.user.entity.UserEntity;
 import com.nortal.lazar.user.model.UserModel;
 import com.nortal.lazar.user.service.UserService;
@@ -30,13 +29,11 @@ public class AddEditAccountController {
 	private UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/protected/user/addEditAccount")
-	public ModelAndView openKreiranjeNaloga(Model model) {
+	public ModelAndView openKreiranjeNaloga() {
 		List<Object[]> agencies = agencyService.getAgenciesNames();
-		model.addAttribute("agencies", agencies);
-		model.addAttribute("profile", new UserModel());
-		
 		ModelAndView modelAndView = new ModelAndView("/protected/user/AddEditAccount");
 		modelAndView.addObject("userModel", new UserModel());
+		modelAndView.addObject("agencies", agencies);
 		return modelAndView;
 	}
 
@@ -49,7 +46,8 @@ public class AddEditAccountController {
 			userService.save(userEntity);
 			List<Object[]> agencies = agencyService.getAgenciesNames();
 			model.addAttribute("agencies", agencies);
-			return "/protected/user/AddEditAccount";
+			// returning redirect in order to have clear form
+			return "redirect:/protected/user/addEditAccount";
 		case "Close":
 			return "protected/Home";
 		default:
