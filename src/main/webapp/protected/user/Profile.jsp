@@ -8,7 +8,7 @@
 <body>
 	<h1>Profile</h1>
 
-	<form id="accountForm" action="<%=request.getContextPath() + "/Protected/profile"%>" method="post">
+	<form id="accountForm" action="${pageContext.servletContext.contextPath}/protected/user/profile" method="post">
 		<table>
 			<tr>
 				<td>First Name:</td>

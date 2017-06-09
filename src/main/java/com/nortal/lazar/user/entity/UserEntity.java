@@ -39,12 +39,13 @@ public class UserEntity {
 	public UserEntity() {
 
 	}
-	
-	public UserEntity (UserModel userModel) {
+
+	public UserEntity(UserModel userModel) {
+		// what to do with ID? do I need it?
 		this.firstName = userModel.getFirstName();
 		this.lastName = userModel.getLastName();
 		this.phone = userModel.getPhone();
-		this.agencyID = userModel.getID();
+		this.agencyID = userModel.getAgencyID();
 		this.status = userModel.getStatus();
 		this.username = userModel.getUsername();
 		this.password = userModel.getPassword();
@@ -123,7 +124,5 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
 
 }

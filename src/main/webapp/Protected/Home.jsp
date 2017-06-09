@@ -74,7 +74,7 @@ body {
 	</c:if>
 
 	<ul>
-		<li><a href="<%=request.getContextPath() + "/protected/profile"%>">Profile</a></li>
+		<li><a href="<%=request.getContextPath() + "/protected/user/profile"%>">Profile</a></li>
 		<li><a href="#">Help</a></li>
 		<li><a href="#">Logout</a></li>
 		<li><a href="#">About</a></li>

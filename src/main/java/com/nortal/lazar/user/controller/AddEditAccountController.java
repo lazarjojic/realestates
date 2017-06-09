@@ -30,14 +30,14 @@ public class AddEditAccountController {
 	private UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/protected/user/addEditAccount")
-	public String openKreiranjeNaloga(Model model) {
+	public ModelAndView openKreiranjeNaloga(Model model) {
 		List<Object[]> agencies = agencyService.getAgenciesNames();
 		model.addAttribute("agencies", agencies);
 		model.addAttribute("profile", new UserModel());
 		
-		ModelAndView mav = new ModelAndView("/protected/user/AddEditAccount");
-		mav.addObject("login", new LoginModel());
-		return "/protected/user/AddEditAccount";
+		ModelAndView modelAndView = new ModelAndView("/protected/user/AddEditAccount");
+		modelAndView.addObject("userModel", new UserModel());
+		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/protected/user/addEditAccount")
@@ -45,14 +45,7 @@ public class AddEditAccountController {
 			@RequestParam("action") String action) {
 		switch (action) {
 		case "Save":
-			String firstName = request.getParameter("firstName");
-			String lastName = request.getParameter("lastName");
-			String phone = request.getParameter("phone");
-			int agencyID = Integer.parseInt(request.getParameter("agency"));
-			String status = request.getParameter("status");
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			UserEntity userEntity = new UserEntity(firstName, lastName, phone, agencyID, status, username, password);
+			UserEntity userEntity = new UserEntity(userModel);
 			userService.save(userEntity);
 			List<Object[]> agencies = agencyService.getAgenciesNames();
 			model.addAttribute("agencies", agencies);

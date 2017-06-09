@@ -14,22 +14,22 @@ import com.nortal.lazar.user.model.UserModel;
 @Controller
 public class ProfileController {
 
-	@RequestMapping(value = "/Protected/profile", method = RequestMethod.POST)
+	@RequestMapping(value = "/protected/user/profile", method = RequestMethod.POST)
 	public String submitPage(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String action = request.getParameter("action").toString();
 		if (action.equals("Close")) {
-			return "Protected/Home";
+			return "protected/Home";
 		} else {
-			return "Protected/ChangePassword";
+			return "protected/user/ChangePassword";
 		}
 	}
 
-	@RequestMapping(value = "/Protected/profile", method = RequestMethod.GET)
+	@RequestMapping(value = "/protected/user/profile", method = RequestMethod.GET)
 	public String openPage(HttpServletRequest request, HttpServletResponse response, Model model) {
 		HttpSession session = request.getSession();
 		UserModel user = (UserModel) session.getAttribute("user");
 		model.addAttribute("account", user);
-		return "/Protected/Profile";
+		return "/protected/user/Profile";
 	}
 
 }
