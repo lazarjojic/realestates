@@ -29,6 +29,17 @@ public class UserModel implements Serializable{
 		this.status = userEntity.getStatus();
 		this.username = userEntity.getUsername();
 		this.password = userEntity.getPassword();
+	}	
+
+	public UserModel(String firstName, String lastName, String phone, int agencyID, String agencyName, String status, String username, String password) {		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phone = phone;
+		this.agencyID = agencyID;
+		this.agencyName = agencyName;
+		this.status = status;
+		this.username = username;
+		this.password = password;
 	}
 
 	public UserModel() {

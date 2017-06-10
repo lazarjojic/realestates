@@ -35,7 +35,7 @@ public class AgencyServiceImpl implements AgencyService {
 
 	@Transactional
 	@Override
-	public List<AgencyEntity> getAncies(String name, String PIB, String director, String address, String phone) {
+	public List<AgencyEntity> getAgencies(String name, String PIB, String director, String address, String phone) {
 		return agencyRepository.getAgencies(name, PIB, director, address, phone);
 	}
 

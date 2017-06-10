@@ -38,8 +38,7 @@ public class AddEditAccountController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/protected/user/addEditAccount")
-	public String doPost(@ModelAttribute(value = "userModel") UserModel userModel, HttpServletRequest request, HttpServletResponse response, Model model,
-			@RequestParam("action") String action) {
+	public String doPost(@ModelAttribute(value = "userModel") UserModel userModel, Model model, @RequestParam("action") String action) {
 		switch (action) {
 		case "Save":
 			UserEntity userEntity = new UserEntity(userModel);
@@ -53,7 +52,5 @@ public class AddEditAccountController {
 		default:
 			return "protected/Home";
 		}
-
 	}
-
 }

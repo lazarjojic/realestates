@@ -53,8 +53,10 @@ tr {
 							<td><input type="text" id="phone" name="phone" /></td>
 						</tr>
 
+						<tr></tr>
 
 						<tr>
+							<td />
 							<td><input type="submit" name="action" value="Search" /></td>
 						</tr>
 
@@ -104,6 +106,7 @@ tr {
 						selectedRow();
 					</script>
 				</td>
+			</tr>
 			<tr>
 				<td></td>
 				<td><input type="submit" name="action" value="Show" /><input type="submit" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="submit" name="action" value="Close" />

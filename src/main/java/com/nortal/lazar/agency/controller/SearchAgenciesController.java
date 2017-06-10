@@ -32,7 +32,7 @@ public class SearchAgenciesController {
 		String action = request.getParameter("action");
 		if (action.equals("Search")) {
 			AgencyModel finalAgencyModel = formatSearchParameters(agencyModel);
-			List<AgencyEntity> foundAgencies = agencyService.getAncies(finalAgencyModel.getName(), finalAgencyModel.getPIB(), finalAgencyModel.getDirector(),
+			List<AgencyEntity> foundAgencies = agencyService.getAgencies(finalAgencyModel.getName(), finalAgencyModel.getPIB(), finalAgencyModel.getDirector(),
 					finalAgencyModel.getAddress(), finalAgencyModel.getPhone());
 			model.addAttribute("agencies", foundAgencies);
 			session.setAttribute("foundAgencies", foundAgencies);
@@ -85,8 +85,8 @@ public class SearchAgenciesController {
 		if (phone.equals(""))
 			phone = null;
 
-		AgencyModel agencyModelFinal = new AgencyModel(name, PIB, director, address, phone);
-		return agencyModelFinal;
+		AgencyModel finalAgencyModel = new AgencyModel(name, PIB, director, address, phone);
+		return finalAgencyModel;
 	}
 
 }

@@ -12,6 +12,6 @@ public interface AgencyService {
 
 	AgencyEntity getAgency(int id);
 
-	List<AgencyEntity> getAncies(String name, String PIB, String director, String address, String phone);
+	List<AgencyEntity> getAgencies(String name, String PIB, String director, String address, String phone);
 
 }

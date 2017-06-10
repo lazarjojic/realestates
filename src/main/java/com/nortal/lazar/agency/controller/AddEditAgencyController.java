@@ -23,12 +23,13 @@ public class AddEditAgencyController {
 	@RequestMapping(value = "/protected/agency/addEditAgency", method = RequestMethod.POST)
 	public String submitForm(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("agency") AgencyModel agencyModel) {
 		String action = request.getParameter("action");
-		if (action.equals("close")) {
-			return "index";
+		if (action.equals("Close")) {
+			return "/protected/Home";
 		} else {
+			//for this better constructor
 			AgencyEntity agencyEntity = new AgencyEntity(agencyModel.getName(), agencyModel.getPIB(), agencyModel.getDirector(), agencyModel.getAddress(), agencyModel.getPhone());
-			agencyService.save(agencyEntity);
-			return "/protected/agency/AddEditAgency";
+			agencyService.save(agencyEntity);			
+			return "redirect:/protected/agency/addEditAgency";
 		}
 	}
 
