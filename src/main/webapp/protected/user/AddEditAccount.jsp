@@ -12,23 +12,23 @@
 	<h1>Account</h1>
 
 	<form:form action="${pageContext.servletContext.contextPath}/protected/user/addEditAccount" method="post" modelAttribute="userModel">
-		<table>			
+		<table>
 			<tr>
 				<td>First Name:</td>
-				<td><form:input path="firstName" value="${account.getFirstName()}" /></td>
+				<td><form:input path="firstName" value="${selectedAccount.getFirstName()}" /></td>
 			</tr>
 			<tr>
 				<td>Last Name:</td>
-				<td><form:input path="lastName" value="${account.getLastName()}" /></td>
+				<td><form:input path="lastName" value="${selectedAccount.getLastName()}" /></td>
 			</tr>
 			<tr>
 				<td>Phone:</td>
-				<td><form:input path="phone" value="${account.getPhone()}" /></td>
+				<td><form:input path="phone" value="${selectedAccount.getPhone()}" /></td>
 			</tr>
 			<tr>
 				<td>Agency:</td>
 				<td><form:select path="agencyID">
-						<c:forEach var="item" items="${agencies}">
+						<c:forEach var="item" items="${foundAgencies}">
 							<form:option value="${item[0]}">${item[1]}</form:option>
 						</c:forEach>
 					</form:select></td>
@@ -45,11 +45,11 @@
 				<c:when test="${sessionScope.user.status == 'admin'}">
 					<tr>
 						<td>Username:</td>
-						<td><form:input path="username" value="${account.getUsername()}" /></td>
+						<td><form:input path="username" value="${selectedAccount.getUsername()}" /></td>
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><form:input path="password" value="${account.getPassword()}" /></td>
+						<td><form:input path="password" /></td>
 					</tr>
 				</c:when>
 				<c:otherwise>

@@ -30,10 +30,10 @@ public class AddEditAccountController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/protected/user/addEditAccount")
 	public ModelAndView openKreiranjeNaloga() {
-		List<Object[]> agencies = agencyService.getAgenciesNames();
+		List<Object[]> foundAgencies = agencyService.getAgenciesNames();
 		ModelAndView modelAndView = new ModelAndView("/protected/user/AddEditAccount");
 		modelAndView.addObject("userModel", new UserModel());
-		modelAndView.addObject("agencies", agencies);
+		modelAndView.addObject("foundAgencies", foundAgencies);
 		return modelAndView;
 	}
 
