@@ -93,7 +93,7 @@ tr {
 							</td>
 						</tr>
 						<tr>
-							<td><input type="button" onclick="location.href = '${pageContext.servletContext.contextPath}/protected/user/viewAccount'" name="action" value="Show" /> <input type="button"
+							<td><input type="submit" name="action" value="Show" /> <input type="button"
 								onclick="location.href = '${pageContext.servletContext.contextPath}/protected/user/addEditAccount'" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="text"
 								id="selectedIndex" name="selectedIndex" style="display: none" /></td>
 						</tr>

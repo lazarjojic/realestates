@@ -20,7 +20,7 @@ import com.nortal.lazar.agency.service.AgencyService;
 import com.nortal.lazar.user.model.UserModel;
 import com.nortal.lazar.user.service.UserService;
 
-@SessionAttributes(value = { "existingAgencies", "foundAccounts" })
+@SessionAttributes(value = { "existingAgencies", "foundAccounts", "selectedAccount" })
 @Controller
 public class SearchAccountsController {
 
@@ -40,24 +40,25 @@ public class SearchAccountsController {
 	}
 
 	@RequestMapping(value = "/protected/user/searchAccounts", method = RequestMethod.POST)
-	public String submitPage(@RequestParam("action") String action, @ModelAttribute("userModel") UserModel userModel, Model model, @RequestParam("selectedIndex") String selectedIndex, HttpSession session) {
+	public String submitPage(@RequestParam("action") String action, @ModelAttribute("userModel") UserModel userModel, Model model,
+			@RequestParam("selectedIndex") String selectedIndex, HttpSession session) {
 		List<Object[]> foundAccounts = null;
 		switch (action) {
 		case "Search":
 			UserModel finalUserModel = formatSearchParameters(userModel);
-			foundAccounts = userService.getUsers(finalUserModel.getFirstName(), finalUserModel.getLastName(), finalUserModel.getPhone(),
-					finalUserModel.getAgencyID(), finalUserModel.getStatus(), finalUserModel.getUsername());
+			foundAccounts = userService.getUsers(finalUserModel.getFirstName(), finalUserModel.getLastName(), finalUserModel.getPhone(), finalUserModel.getAgencyID(),
+					finalUserModel.getStatus(), finalUserModel.getUsername());
 			model.addAttribute("foundAccounts", foundAccounts);
-			return "/protected/user/SearchAccounts";
+			return "protected/user/SearchAccounts";
 		case "Show":
-			foundAccounts = (List<Object[]>)session.getAttribute("foundAccounts");
+			foundAccounts = (List<Object[]>) session.getAttribute("foundAccounts");
 			// remove session attributes
-			UserModel selectedAccount = extractSelectedAccount(foundAccounts, Integer.parseInt(selectedIndex));
+			UserModel selectedAccount = extractSelectedAccount(foundAccounts, Integer.parseInt(selectedIndex) - 1);
 			model.addAttribute("selectedAccount", selectedAccount);
-			return "/protected/user/ViewAccount";
+			return "protected/user/ViewAccount";
 		case "Close":
 			// remove session attributes
-			return "/protected/Home";
+			return "protected/Home";
 		default:
 			return null;
 		}
@@ -87,7 +88,13 @@ public class SearchAccountsController {
 	UserModel extractSelectedAccount(List<Object[]> foundAccounts, int index) {
 		// String firstName = (String)((Object[])foundAccounts.get(index))[0];
 		String firstName = (String) (foundAccounts.get(index))[0];
-		return new UserModel(firstName, "", "", 0, "", "", "", "");
+		String lastName = (String) (foundAccounts.get(index))[1];
+		String phone = (String) (foundAccounts.get(index))[2];
+		String agencyName = (String) (foundAccounts.get(index))[3];
+		String status = (String) (foundAccounts.get(index))[4];
+		String username = (String) (foundAccounts.get(index))[5];
+		// should i set agency id???
+		return new UserModel(firstName, lastName, phone, 0, agencyName, status, username, null);
 
 	}
 

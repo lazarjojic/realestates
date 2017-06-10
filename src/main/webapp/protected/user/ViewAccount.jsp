@@ -9,7 +9,7 @@
 <body>
 	<h1>View Account</h1>
 
-	<form:form id="accountForm" action="${pageContext.servletContext.contextPath}/protected/user/profile" method="post">
+	<form:form id="accountForm" action="${pageContext.servletContext.contextPath}/protected/user/viewAccount" method="post">
 		<table>
 			<tr>
 				<td>First Name:</td>
@@ -18,31 +18,31 @@
 
 			<tr>
 				<td>Last Name:</td>
-				<td>${sessionScope.user.getLastName()}</td>
+				<td>${selectedAccount.getLastName()}</td>
 			</tr>
 
 			<tr>
 				<td>Phone:</td>
-				<td>${sessionScope.user.getPhone()}</td>
+				<td>${selectedAccount.getPhone()}</td>
 			</tr>
 
 			<tr>
 				<td>Agency:</td>
-				<td>${sessionScope.user.getAgencyName()}</td>
+				<td>${selectedAccount.getAgencyName()}</td>
 			</tr>
 
 			<tr>
 				<td>Status:</td>
-				<td>${sessionScope.user.getStatus()}</td>
+				<td>${selectedAccount.getStatus()}</td>
 			</tr>
 
 			<tr>
 				<td>Username:</td>
-				<td>${sessionScope.user.getUsername()}</td>
+				<td>${selectedAccount.getUsername()}</td>
 			</tr>
 
 			<tr>
-				<td><input type="submit" name="action" value="Change password" /></td>
+				<td><input type="submit" name="action" value="Edit" /></td>
 				<td><input type="submit" name="action" value="Close" /></td>
 			</tr>
 
