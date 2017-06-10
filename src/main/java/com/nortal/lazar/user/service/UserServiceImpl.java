@@ -36,7 +36,14 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public List<Object[]> getUsernames(String status) {
-		return userRepository.getUsernames(status);		
+		return userRepository.getUsernames(status);
+	}
+
+	// get users and their agencies names
+	@Transactional
+	@Override
+	public List<Object[]> getUsers(String firstName, String lastName, String phone, int agencyID, String status, String username) {
+		return userRepository.getUsers(firstName, lastName, phone, agencyID, status, username);
 	}
 
 }

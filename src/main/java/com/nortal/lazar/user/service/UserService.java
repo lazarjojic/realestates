@@ -14,4 +14,7 @@ public interface UserService {
 
 	List<Object[]> getUsernames(String status);
 
+	// get users and their agencies names
+	List<Object[]> getUsers(String firstName, String lastName, String phone, int agencyID, String status, String username);
+
 }
