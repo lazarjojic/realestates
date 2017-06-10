@@ -6,150 +6,120 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search Accounts</title>
+<style>
+tr {
+	cursor: pointer;
+	transition: all .25s ease-in-out
+}
+
+.selected {
+	background-color: red;
+	font-weight: bold;
+	color: #fff;
+}
+</style>
 </head>
 <body>
+	<h1>Search Accounts</h1>
 
-	<form:form action="${pageContext.servletContext.contextPath}/protected/user/searchAccounts" method="post" id="searchRealEstateForm">
-
+	<form:form action="${pageContext.servletContext.contextPath}/protected/user/searchAccounts" method="post" modelAttribute="userModel">
 		<table>
 			<tr>
 				<td>
 					<table>
 						<tr>
 							<td>First Name:</td>
-							<td><input type="text" name="firstName" />
+							<td><form:input path="firstName" />
 						</tr>
-
 						<tr>
 							<td>Last Name:</td>
-							<td><input type="text" name="lastName" />
+							<td><form:input path="lastName" />
 						</tr>
-
 						<tr>
 							<td>Phone:</td>
-							<td><input type="text" name="phone" />
+							<td><form:input path="phone" />
 						</tr>
-
 						<tr>
 							<td>Agency:</td>
-							<td><select name="agency">
-									<c:forEach var="item" items="${agencies}">
-										<option value="${item[0]}">${item[1]}</option>
+							<td><form:select path="agencyID">
+									<c:forEach var="item" items="${existingAgencies}">
+										<form:option value="${item[0]}">${item[1]}</form:option>
 									</c:forEach>
-							</select></td>
+								</form:select></td>
 						</tr>
-
 						<tr>
 							<td>Status:</td>
-							<td><select name="status">
-									<option value="admin">Administrator</option>
-									<option value="moderator">Moderator</option>
-									<option value="agent">Agent</option>
-							</select></td>
+							<td><form:select path="status">
+									<form:option value="admin">Administrator</form:option>
+									<form:option value="moderator">Moderator</form:option>
+									<form:option value="agent">Agent</form:option>
+								</form:select></td>
 						</tr>
-
 						<tr>
 							<td>Username:</td>
 							<td><input type="text" name="username" />
 						</tr>
-
+						<tr></tr>
 						<tr>
 							<td />
-							<td><input type="submit" name="search" value="Search" /></td>
+							<td><input type="submit" name="action" value="Search" /> <input type="button" onclick="location.href = '${pageContext.servletContext.contextPath}/protected/home'" name="action" value="Close" /></td>
 						</tr>
-
 					</table>
-
-
 				</td>
-
 				<td>
 					<table>
 						<tr>
-							<td>Floor from:</td>
-							<td><input type="text" id="address" name="floorFrom" /></td>
-							<td>to:</td>
-							<td><input type="text" id="address" name="floorTo" /></td>
+							<td>
+								<table id="listOfFoundAccounts" border="1">
+									<tr>
+										<th>First Name</th>
+										<th>Last Name</th>
+										<th>Phone</th>
+										<th>Agency</th>
+										<th>Status</th>
+										<th>Username</th>
+									</tr>
+									<c:forEach var="item" items="${foundAccounts}">
+										<tr>
+											<td>${item[0]}</td>
+											<td>${item[1]}</td>
+											<td>${item[2]}</td>
+											<td>${item[3]}</td>
+											<td>${item[4]}</td>
+											<td>${item[5]}</td>
+										</tr>
+									</c:forEach>
+								</table>
+							</td>
 						</tr>
-
 						<tr>
-							<td>Heating:</td>
-							<td><select name="heating">
-									<option value="1">Central</option>
-									<option value="1">Wood</option>
-									<option value="1">Electric</option>
-							</select></td>
-
+							<td><input type="button" onclick="location.href = '${pageContext.servletContext.contextPath}/protected/user/viewAccount'" name="action" value="Show" /> <input type="button"
+								onclick="location.href = '${pageContext.servletContext.contextPath}/protected/user/addEditAccount'" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="text"
+								id="selectedIndex" name="selectedIndex" style="display: none" /></td>
 						</tr>
+					</table> <script>
+						function selectedRow() {
+							var index, table = document
+									.getElementById("listOfFoundAccounts");
 
-						<tr>
-							<td>Balcony:</td>
-							<td><input type="checkbox" id="address" name="balcony" /></td>
-						</tr>
-
-						<tr>
-							<td>Type:</td>
-							<td><select name="heating">
-									<option value="1">House</option>
-									<option value="1">Apartment</option>
-									<option value="1">Business Place</option>
-									<option value="1">Garage</option>
-							</select></td>
-						</tr>
-
-						<tr>
-							<td>Entry date from:</td>
-							<td><input type="text" id="address" name="floorFrom" /></td>
-							<td>to:</td>
-							<td><input type="text" id="address" name="floorTo" /></td>
-
-
-						</tr>
-
-
-						<tr>
-							<td>Booked:</td>
-							<td><input type="checkbox" id="address" name="booked" /></td>
-						</tr>
-
-						<tr>
-							<td>Status:</td>
-							<td><select name="status">
-									<option value="1">Under Construction</option>
-									<option value="2">Finished</option>
-							</select></td>
-
-						</tr>
-
-						<tr>
-							<td>Mode:</td>
-							<td><select name="mode">
-									<option value="1">Selling</option>
-									<option value="2">Renting</option>
-									<option value="2">Selling per m2</option>
-									<option value="2">Renting per m2</option>
-							</select></td>
-						</tr>
-
-					</table>
-
+							for (var i = 1; i < table.rows.length; i++) {
+								table.rows[i].onclick = function() {
+									if (typeof index !== "undefined") {
+										table.rows[index].classList
+												.toggle("selected");
+									}
+									index = this.rowIndex;
+									document.getElementById("selectedIndex").value = index;
+									this.classList.toggle("selected");
+								};
+							}
+						}
+						selectedRow();
+					</script>
 				</td>
-
-			</tr>
-
-			<tr>
-				<td><h1>Tabela</h1></td>
-
-			</tr>
-
-			<tr>
-				<td><input type="button" onclick="location.href = '<%=request.getContextPath() + "/Protected/realEstate"%>'" name="action" value="Show" /> <input type="button"
-					onclick="location.href = '<%=request.getContextPath() + "/Protected/editRealEstate"%>'" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="submit" name="action"
-					value="Close" /></td>
 			</tr>
 		</table>
 	</form:form>
-
 
 </body>
 </html>
