@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Real Estates</title>
 <style>
 body {
 	margin: 0;
@@ -37,6 +37,7 @@ body {
 </style>
 </head>
 <body>
+	<h1>Real Estates</h1>
 	<c:if test="${sessionScope.user.status == 'admin'}">
 		<ul class="nav">
 			<li>Accounts

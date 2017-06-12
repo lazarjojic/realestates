@@ -2,6 +2,8 @@ package com.nortal.lazar.user.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.nortal.lazar.agency.service.AgencyService;
 import com.nortal.lazar.user.model.UserModel;
 
-
+@SessionAttributes("addOrEditAccount")
 @Controller
 public class ViewAccountController {
 
@@ -21,31 +23,25 @@ public class ViewAccountController {
 	private AgencyService agencyService;
 
 	@RequestMapping(value = "/protected/user/viewAccount", method = RequestMethod.POST)
-	public ModelAndView submitPage(@RequestParam("action") String action) {
+	public ModelAndView submitPage(@RequestParam("action") String action, HttpSession session) {
 		ModelAndView modelAndView = null;
-		List<Object[]> existingAgencies = agencyService.getAgenciesNames();
 		switch (action) {
 		case "Close":
 			modelAndView = new ModelAndView("/protected/user/SearchAccounts");
 			modelAndView.addObject("userModel", new UserModel());
-			modelAndView.addObject("existingAgencies", existingAgencies);
 			break;
 		case "Edit":
 			modelAndView = new ModelAndView("/protected/user/AddEditAccount");
+			String addOrEditAccount = (String) session.getAttribute("addOrEditAccount");
+			if (addOrEditAccount == null) {
+				modelAndView.addObject("addOrEditAccount", "edit");
+				modelAndView.addObject("pageTitle", "Edit Account");
+			}
 			modelAndView.addObject("userModel", new UserModel());
-			//modelAndView.addObject("existingAgencies", existingAgencies);
 			break;
 		}
 		return modelAndView;
 
 	}
-
-	// @RequestMapping(value = "/protected/user/viewAccount", method =
-	// RequestMethod.GET)
-	// public String openPage(HttpServletRequest request, HttpServletResponse
-	// response, Model model) {
-	//
-	// return "/Protected/Account";
-	// }
 
 }

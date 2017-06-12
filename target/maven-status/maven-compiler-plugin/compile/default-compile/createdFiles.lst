@@ -14,6 +14,8 @@ com\nortal\lazar\interceptor\GlobalInterceptor.class
 com\nortal\lazar\realestate\model\RealEstateAddressModel.class
 com\nortal\lazar\realestate\service\RealEstateAddressService.class
 com\nortal\lazar\user\controller\ChangePasswordController.class
+com\nortal\lazar\controller\HomeController.class
+com\nortal\lazar\commons\Utilities.class
 com\nortal\lazar\agency\controller\EditAgencyController.class
 com\nortal\lazar\realestate\service\DocumentService.class
 com\nortal\lazar\agency\service\AgencyServiceImpl.class
@@ -33,10 +35,12 @@ com\nortal\lazar\realestate\repository\RealEstateAddressRepository.class
 com\nortal\lazar\realestate\service\RealEstateServiceImpl.class
 com\nortal\lazar\realestate\repository\RealEstateRepository.class
 com\nortal\lazar\realestate\repository\DocumentRepositoryImpl.class
+com\nortal\lazar\user\controller\ViewAccountController.class
 com\nortal\lazar\agency\repository\AgencyRepository.class
 com\nortal\lazar\realestate\service\DocumentServiceImpl.class
 com\nortal\lazar\realestate\controller\AddEditRealEstateController.class
 com\nortal\lazar\realestate\controller\DocumentsController.class
+com\nortal\lazar\user\controller\SearchAccountsController.class
 com\nortal\lazar\realestate\controller\RealEstateDataController.class
 com\nortal\lazar\agency\service\AgencyService.class
 com\nortal\lazar\user\controller\AddEditAccountController.class

@@ -18,7 +18,7 @@
 			<td>
 				<table>
 					<tr>
-						<td>Price:</td>						
+						<td>Price:</td>
 						<td>${sessionScope.realEstateWrapperModel.getRealEstateModel().getPrice()}</td>
 					</tr>
 					<tr>
@@ -106,7 +106,18 @@
 
 	<form:form action="${pageContext.servletContext.contextPath}/protected/realEstate/photos" method="POST" id="photosForm">
 
-		<img alt="Image" src="${pageContext.servletContext.contextPath}/Files/profile_photo/rudar.jpg" style="width: 400px; height: 300px;" />
+		<img src='<c:url value="/files/korali.jpg"></c:url>' />	
+		<img src="<c:url value="/files/korali.jpg"></c:url>" />	
+		
+		<img src='<c:url value="/files/profile_photo/rudar.jpg"></c:url>' />	
+		<img src="<c:url value="/files/profile_photo/face1.jpg"></c:url>" />	
+		
+		<img src='<c:url value="/files/korali.jpg"></c:url>' />	
+		<img src="<c:url value="/files/korali.jpg"></c:url>" />		
+		
+		
+		
+		
 		<br />
 		<br />
 		<input type="submit" name="action" value="Previous" />

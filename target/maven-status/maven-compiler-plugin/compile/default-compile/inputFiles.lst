@@ -3,6 +3,7 @@ D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\activity\contro
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\repository\AgencyRepository.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\model\PhotoModel.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\repository\RealEstateAddressRepositoryImpl.java
+D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\commons\Utilities.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\controller\RealEstateController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\service\AgencyService.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\interceptor\GlobalInterceptor.java
@@ -16,14 +17,17 @@ D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\mode
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\repository\RealEstateAddressRepository.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\controller\AddEditAccountController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\model\LoginModel.java
+D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\controller\SearchAccountsController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\entity\UserEntity.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\entity\AgencyEntity.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\controller\AddEditRealEstateController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\service\DocumentService.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\controller\DocumentsController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\service\PhotoServiceImpl.java
+D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\controller\HomeController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\model\AgencyModel.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\service\UserService.java
+D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\user\controller\ViewAccountController.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\agency\repository\AgencyRepositoryImpl.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\repository\DocumentRepository.java
 D:\BARBAROSA\Projekat\realestates\src\main\java\com\nortal\lazar\realestate\repository\RealEstateRepositoryImpl.java

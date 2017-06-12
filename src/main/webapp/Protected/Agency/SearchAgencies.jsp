@@ -57,7 +57,7 @@ tr {
 
 						<tr>
 							<td />
-							<td><input type="submit" name="action" value="Search" /></td>
+							<td><input type="submit" name="action" value="Search" /> <input type="submit" name="action" value="Close" /></td>
 						</tr>
 
 					</table>
@@ -109,8 +109,8 @@ tr {
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="action" value="Show" /><input type="submit" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="submit" name="action" value="Close" />
-					<input type="text" id="selectedIndex" name="selectedIndex" style="display: none" /></td>
+				<td><input type="submit" name="action" value="Show" /><input type="submit" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="text" id="selectedIndex"
+					name="selectedIndex" style="display: none" /></td>
 			</tr>
 		</table>
 	</form:form>

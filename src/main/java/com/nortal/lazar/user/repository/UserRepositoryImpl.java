@@ -42,8 +42,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public void updateUser(UserEntity userEntity) {
-		// TODO Auto-generated method stub
-
+		em.merge(userEntity);
 	}
 
 	@Override
@@ -55,10 +54,10 @@ public class UserRepositoryImpl implements UserRepository {
 
 	// get users and their agencies names
 	@Override
-	public List<Object[]> getUsers(String firstName, String lastName, String userPhone, int agencyID, String status, String username) {
+	public List<Object[]> getUsers(String firstName, String lastName, String userPhone, Integer agencyID, String status, String username) {
 		StringBuffer buf = new StringBuffer();
 		buf.append("select ");
-		buf.append("user.firstName, user.lastName, user.phone, agency.name, user.status, user.username ");
+		buf.append("user.id, user.firstName, user.lastName, user.phone, agency.name, user.status, user.username ");
 		buf.append("from UserEntity as user, AgencyEntity as agency ");
 		buf.append("where (user.agencyID=agency.ID) ");
 		buf.append("and (user.firstName=:firstName or :firstName is null) ");
@@ -72,7 +71,10 @@ public class UserRepositoryImpl implements UserRepository {
 		query.setParameter("firstName", firstName);
 		query.setParameter("lastName", lastName);
 		query.setParameter("userPhone", userPhone);
-		query.setParameter("agencyID", agencyID);
+		if (agencyID == null)
+			query.setParameter("agencyID", null);
+		else
+			query.setParameter("agencyID", agencyID.intValue());
 		query.setParameter("status", status);
 		query.setParameter("username", username);
 		return (List<Object[]>) query.getResultList();

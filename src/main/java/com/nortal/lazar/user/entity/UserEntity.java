@@ -42,6 +42,7 @@ public class UserEntity {
 
 	public UserEntity(UserModel userModel) {
 		// what to do with ID? do I need it?
+		this.ID = userModel.getID();
 		this.firstName = userModel.getFirstName();
 		this.lastName = userModel.getLastName();
 		this.phone = userModel.getPhone();

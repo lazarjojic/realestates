@@ -38,7 +38,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView openPage(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		this.getClass().getClassLoader().getResourceAsStream("korali.jpg");
 		if (isUserLogedin(request)) {
 			return new ModelAndView("protected/Home");
@@ -75,7 +75,7 @@ public class LoginController {
 			return "Login";
 		} else {
 			setSessionData(request, userEntity);
-			return "/protected/Home";
+			return "redirect:/protected/home";
 		}
 	}
 

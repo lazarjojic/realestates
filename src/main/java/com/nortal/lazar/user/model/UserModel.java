@@ -7,9 +7,9 @@ import com.nortal.lazar.user.entity.UserEntity;
 /*
  * Model class based on User table and agency name as additional information
  */
-public class UserModel implements Serializable{
+public class UserModel implements Serializable {
 	private static final long serialVersionUID = 7655488066102808080L;
-	
+
 	private int ID;
 	private String firstName;
 	private String lastName;
@@ -29,9 +29,10 @@ public class UserModel implements Serializable{
 		this.status = userEntity.getStatus();
 		this.username = userEntity.getUsername();
 		this.password = userEntity.getPassword();
-	}	
+	}
 
-	public UserModel(String firstName, String lastName, String phone, int agencyID, String agencyName, String status, String username, String password) {		
+	public UserModel(int ID, String firstName, String lastName, String phone, int agencyID, String agencyName, String status, String username, String password) {
+		this.ID = ID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
@@ -40,6 +41,18 @@ public class UserModel implements Serializable{
 		this.status = status;
 		this.username = username;
 		this.password = password;
+	}
+
+	
+	public UserModel update(UserModel userModel) {
+		this.firstName = userModel.getFirstName();
+		this.lastName = userModel.getLastName();
+		this.phone = userModel.getPhone();
+		this.agencyID = userModel.getAgencyID();
+		this.status = userModel.getStatus();
+		this.username = userModel.getUsername();
+		this.password = userModel.getPassword();
+		return this;
 	}
 
 	public UserModel() {

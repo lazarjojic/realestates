@@ -8,7 +8,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
+
+
 <style type="text/css">
+html, body {
+	height: 100%;
+}
+
+body {
+	background-image: url(files/background.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
 .error {
 	color: #ff0000;
 }
@@ -23,8 +35,8 @@
 </style>
 </head>
 
+
 <body>
-	<%-- 	<c:import url="<%=request.getContextPath() + \"/protected/header.jsp\"%>" /> --%>
 
 	<form:form action="<%=request.getContextPath() + \"/login\"%>" modelAttribute="login" method="POST">
 		<form:errors path="*" cssClass="errorblock" element="div" />
@@ -56,6 +68,5 @@
 
 		</table>
 	</form:form>
-
 </body>
 </html>

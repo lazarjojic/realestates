@@ -20,7 +20,7 @@ import com.nortal.lazar.agency.service.AgencyService;
 import com.nortal.lazar.user.model.UserModel;
 import com.nortal.lazar.user.service.UserService;
 
-@SessionAttributes(value = { "existingAgencies", "foundAccounts", "selectedAccount" })
+@SessionAttributes({ "foundAccounts", "selectedAccount" })
 @Controller
 public class SearchAccountsController {
 
@@ -32,10 +32,8 @@ public class SearchAccountsController {
 
 	@RequestMapping(value = "/protected/user/searchAccounts", method = RequestMethod.GET)
 	public ModelAndView openPage(HttpServletRequest request, HttpServletResponse response, Model model) {
-		List<Object[]> existingAgencies = agencyService.getAgenciesNames();
 		ModelAndView modelAndView = new ModelAndView("/protected/user/SearchAccounts");
-		modelAndView.addObject("userModel", new UserModel());
-		modelAndView.addObject("existingAgencies", existingAgencies);
+		modelAndView.addObject("userModel", new UserModel());		
 		return modelAndView;
 	}
 
@@ -46,14 +44,20 @@ public class SearchAccountsController {
 		switch (action) {
 		case "Search":
 			UserModel finalUserModel = formatSearchParameters(userModel);
-			foundAccounts = userService.getUsers(finalUserModel.getFirstName(), finalUserModel.getLastName(), finalUserModel.getPhone(), finalUserModel.getAgencyID(),
-					finalUserModel.getStatus(), finalUserModel.getUsername());
+			Integer finalAgencyID = finalUserModel.getAgencyID();
+			if (finalUserModel.getAgencyID() == -1)
+				finalAgencyID = null;
+			foundAccounts = userService.getUsers(finalUserModel.getFirstName(), finalUserModel.getLastName(), finalUserModel.getPhone(), finalAgencyID, finalUserModel.getStatus(),
+					finalUserModel.getUsername());
 			model.addAttribute("foundAccounts", foundAccounts);
 			return "protected/user/SearchAccounts";
 		case "Show":
+			if (selectedIndex.equals(""))
+				return "protected/user/SearchAccounts";
 			foundAccounts = (List<Object[]>) session.getAttribute("foundAccounts");
-			// remove session attributes
 			UserModel selectedAccount = extractSelectedAccount(foundAccounts, Integer.parseInt(selectedIndex) - 1);
+			// remove session attributes
+
 			model.addAttribute("selectedAccount", selectedAccount);
 			return "protected/user/ViewAccount";
 		case "Close":
@@ -79,23 +83,27 @@ public class SearchAccountsController {
 			lastName = null;
 		if (userModel.getPhone().equals(""))
 			phone = null;
+		if (userModel.getStatus().equals("Show All"))
+			status = null;
 		if (userModel.getUsername().equals(""))
 			username = null;
-		UserModel finalUserModel = new UserModel(firstName, lastName, phone, agencyID, agencyName, status, username, password);
+
+		// ID=0 just to put some value in constructor, it will never be used
+		UserModel finalUserModel = new UserModel(0, firstName, lastName, phone, agencyID, agencyName, status, username, password);
 		return finalUserModel;
 	}
 
-	UserModel extractSelectedAccount(List<Object[]> foundAccounts, int index) {
-		// String firstName = (String)((Object[])foundAccounts.get(index))[0];
-		String firstName = (String) (foundAccounts.get(index))[0];
-		String lastName = (String) (foundAccounts.get(index))[1];
-		String phone = (String) (foundAccounts.get(index))[2];
-		String agencyName = (String) (foundAccounts.get(index))[3];
-		String status = (String) (foundAccounts.get(index))[4];
-		String username = (String) (foundAccounts.get(index))[5];
+	private UserModel extractSelectedAccount(List<Object[]> foundAccounts, int index) {		
+		int i = 0;
+		int ID = (Integer) (foundAccounts.get(index))[i];
+		String firstName = (String) (foundAccounts.get(index))[++i];
+		String lastName = (String) (foundAccounts.get(index))[++i];
+		String phone = (String) (foundAccounts.get(index))[++i];
+		String agencyName = (String) (foundAccounts.get(index))[++i];
+		String status = (String) (foundAccounts.get(index))[++i];
+		String username = (String) (foundAccounts.get(index))[++i];
 		// should i set agency id???
-		return new UserModel(firstName, lastName, phone, 0, agencyName, status, username, null);
-
+		return new UserModel(ID, firstName, lastName, phone, 0, agencyName, status, username, null);
 	}
 
 }

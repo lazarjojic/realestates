@@ -42,6 +42,7 @@ tr {
 						<tr>
 							<td>Agency:</td>
 							<td><form:select path="agencyID">
+									<form:option value="-1">Show All</form:option>
 									<c:forEach var="item" items="${existingAgencies}">
 										<form:option value="${item[0]}">${item[1]}</form:option>
 									</c:forEach>
@@ -50,6 +51,7 @@ tr {
 						<tr>
 							<td>Status:</td>
 							<td><form:select path="status">
+									<form:option value="Show All">Show All</form:option>
 									<form:option value="admin">Administrator</form:option>
 									<form:option value="moderator">Moderator</form:option>
 									<form:option value="agent">Agent</form:option>
@@ -80,22 +82,21 @@ tr {
 										<th>Username</th>
 									</tr>
 									<c:forEach var="item" items="${foundAccounts}">
-										<tr>
-											<td>${item[0]}</td>
+										<tr>											
 											<td>${item[1]}</td>
 											<td>${item[2]}</td>
 											<td>${item[3]}</td>
 											<td>${item[4]}</td>
 											<td>${item[5]}</td>
+											<td>${item[6]}</td>
 										</tr>
 									</c:forEach>
 								</table>
 							</td>
 						</tr>
 						<tr>
-							<td><input type="submit" name="action" value="Show" /> <input type="button"
-								onclick="location.href = '${pageContext.servletContext.contextPath}/protected/user/addEditAccount'" name="action" value="Edit" /> <input type="submit" name="action" value="Delete" /> <input type="text"
-								id="selectedIndex" name="selectedIndex" style="display: none" /></td>
+							<td><input type="submit" name="action" value="Show" /> <input type="button" onclick="location.href = '${pageContext.servletContext.contextPath}/protected/user/addEditAccount'" name="action" value="Edit" />
+								<input type="submit" name="action" value="Delete" /> <input type="text" id="selectedIndex" name="selectedIndex" style="display: none" /></td>
 						</tr>
 					</table> <script>
 						function selectedRow() {

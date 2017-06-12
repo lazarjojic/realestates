@@ -29,6 +29,13 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
+	public void updateUser(UserEntity userEntity) {
+		userRepository.updateUser(userEntity);
+	}
+	
+	
+	@Transactional
+	@Override
 	public void updatePassword(int userID, String newPassword) {
 		userRepository.updatePassword(userID, newPassword);
 	}
@@ -42,7 +49,7 @@ public class UserServiceImpl implements UserService {
 	// get users and their agencies names
 	@Transactional
 	@Override
-	public List<Object[]> getUsers(String firstName, String lastName, String phone, int agencyID, String status, String username) {
+	public List<Object[]> getUsers(String firstName, String lastName, String phone, Integer agencyID, String status, String username) {
 		return userRepository.getUsers(firstName, lastName, phone, agencyID, status, username);
 	}
 
