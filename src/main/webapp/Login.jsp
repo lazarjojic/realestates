@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +38,7 @@ body {
 
 <body>
 
-	<form:form action="<%=request.getContextPath() + \"/login\"%>" modelAttribute="login" method="POST">
+	<form:form action="${pageContext.servletContext.contextPath}/login" modelAttribute="login" method="POST">
 		<form:errors path="*" cssClass="errorblock" element="div" />
 		<table>
 			<tr>

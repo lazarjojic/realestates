@@ -7,11 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nortal.lazar.agency.service.AgencyService;
@@ -29,9 +29,12 @@ import com.nortal.lazar.user.entity.UserEntity;
 import com.nortal.lazar.user.model.UserModel;
 import com.nortal.lazar.user.service.UserService;
 
-@SessionAttributes("addOrEditAccount")
+@SessionAttributes({ "addOrEditAccount", "profileImagePath" })
 @Controller
 public class AddEditAccountController {
+
+	@Autowired
+	ServletContext context;
 
 	@Autowired
 	private AgencyService agencyService;
@@ -52,36 +55,35 @@ public class AddEditAccountController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/protected/user/addEditAccount")
-	public String doPost(@ModelAttribute(value = "userModel") UserModel userModel, Model model, @RequestParam("action") String action, 
-			@RequestParam("file") Part filePart, HttpSession session, SessionStatus sessionStatus, HttpServletResponse response) throws IOException {
+	public String doPost(@ModelAttribute(value = "userModel") UserModel userModel, Model model, @RequestParam("action") String action, @RequestParam("file") MultipartFile filePart,
+			HttpSession session, SessionStatus sessionStatus, HttpServletResponse response) throws IOException {
 		String addOrEditAccount = (String) session.getAttribute("addOrEditAccount");
 		switch (action) {
 		case "Add":
-
-			final String fileName = getFileName(filePart);
-			final PrintWriter writer = response.getWriter();
+			final String fileName = filePart.getOriginalFilename();
+			// final PrintWriter writer = response.getWriter();
 			OutputStream out = null;
 			InputStream filecontent = null;
 			try {
-
-			//	out = new FileOutputStream(new File(path + File.separator + fileName));
-				out = new FileOutputStream(new File("files" + File.separator + fileName));
+				String uploadPath = context.getRealPath("") + "/files/temp" + File.separator + fileName;
+				model.addAttribute("profileImagePath", "/files/temp/" + File.separator + fileName);
+				out = new FileOutputStream(uploadPath);
 				filecontent = filePart.getInputStream();
-
 				int read = 0;
 				final byte[] bytes = new byte[1024];
 
 				while ((read = filecontent.read(bytes)) != -1) {
 					out.write(bytes, 0, read);
 				}
-				//writer.println("New file " + fileName + " created at " + path);
 
 			} catch (FileNotFoundException fne) {
-				writer.println("You either did not specify a file to upload or are " + "trying to upload a file to a protected or nonexistent " + "location.");
-				writer.println("<br/> ERROR: " + fne.getMessage());
+				// writer.println("You either did not specify a file to upload
+				// or are " + "trying to upload a file to a protected or
+				// nonexistent " + "location.");
+				// writer.println("<br/> ERROR: " + fne.getMessage());
+				System.out.println(fne.getMessage());
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
 				if (out != null) {
@@ -90,11 +92,11 @@ public class AddEditAccountController {
 				if (filecontent != null) {
 					filecontent.close();
 				}
-				if (writer != null) {
-					writer.close();
-				}
+				// if (writer != null) {
+				// writer.close();
+				// }
 			}
-			return "kurac";
+			return "protected/user/AddEditAccount";
 		case "Save":
 			UserEntity userEntity = null;
 			if (addOrEditAccount.equals("add")) {
@@ -102,7 +104,7 @@ public class AddEditAccountController {
 				userService.save(userEntity);
 
 				// returning redirect in order to have clear form
-				return "redirect:/protected/user/AddEditAccount";
+				return "redirect:/protected/user/addEditAccount";
 			} else {
 				// edit existing account
 				// return to view account but update account with new data
@@ -126,13 +128,4 @@ public class AddEditAccountController {
 		}
 	}
 
-	private String getFileName(final Part part) {
-		final String partHeader = part.getHeader("content-disposition");
-		for (String content : part.getHeader("content-disposition").split(";")) {
-			if (content.trim().startsWith("filename")) {
-				return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-			}
-		}
-		return null;
-	}
 }
