@@ -25,6 +25,18 @@ CREATE TABLE IF NOT EXISTS user
   
 insert into user (first_name, last_name, phone, agency_id, status, username, password) values ('lazar', 'jojic', '064', 1, 'admin', 'lazar', 'lazar');
   
+CREATE TABLE IF NOT EXISTS user_image
+(
+   id INT PRIMARY KEY AUTO_INCREMENT,
+   user_id INT NOT NULL,
+   image_path VARCHAR (150) NOT NULL,
+   FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+INSERT INTO user_image (user_id, image_path) VALUES (1, '/files/profile/photo/lazar_admin');
+  
+
+  
 CREATE TABLE IF NOT EXISTS real_estate
   (
     id          INT PRIMARY KEY AUTO_INCREMENT,

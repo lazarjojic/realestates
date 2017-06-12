@@ -74,6 +74,8 @@
 					</table>
 				</td>
 				<td><img src='<c:url value="${profileImagePath}"></c:url>' alt="No image" style="width: 145px; height: 167px;" /></td>
+
+			</tr>
 		</table>
 	</form:form>
 
