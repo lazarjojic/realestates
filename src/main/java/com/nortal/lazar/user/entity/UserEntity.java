@@ -12,6 +12,7 @@ import com.nortal.lazar.user.model.UserModel;
 @Table(name = "user")
 public class UserEntity {
 	@Id
+	@Column(name = "id")
 	@GeneratedValue
 	private int ID;
 

@@ -11,7 +11,7 @@ public interface UserService {
 	UserEntity getUser(String username);
 
 	void updateUser(UserEntity userEntity);
-	
+
 	void updatePassword(int userID, String newPassword);
 
 	List<Object[]> getUsernames(String status);

@@ -6,8 +6,7 @@ public class PhotoRepositoryImpl implements PhotoRepository {
 
 	@Override
 	public void save(PhotoEntity photoEntity) {
-		
-		
+
 	}
 
 }

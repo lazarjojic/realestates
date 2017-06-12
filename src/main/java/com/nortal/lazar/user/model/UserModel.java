@@ -43,7 +43,6 @@ public class UserModel implements Serializable {
 		this.password = password;
 	}
 
-	
 	public UserModel update(UserModel userModel) {
 		this.firstName = userModel.getFirstName();
 		this.lastName = userModel.getLastName();

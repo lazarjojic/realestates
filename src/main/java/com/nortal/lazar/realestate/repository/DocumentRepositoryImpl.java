@@ -9,11 +9,11 @@ public class DocumentRepositoryImpl implements DocumentRepository {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public void save(DocumentEntity documentsEntity) {
 		em.persist(documentsEntity);
-		em.flush();		
+		em.flush();
 	}
 
 }

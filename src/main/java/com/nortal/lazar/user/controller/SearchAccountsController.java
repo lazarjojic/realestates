@@ -33,7 +33,7 @@ public class SearchAccountsController {
 	@RequestMapping(value = "/protected/user/searchAccounts", method = RequestMethod.GET)
 	public ModelAndView openPage(HttpServletRequest request, HttpServletResponse response, Model model) {
 		ModelAndView modelAndView = new ModelAndView("/protected/user/SearchAccounts");
-		modelAndView.addObject("userModel", new UserModel());		
+		modelAndView.addObject("userModel", new UserModel());
 		return modelAndView;
 	}
 
@@ -93,7 +93,7 @@ public class SearchAccountsController {
 		return finalUserModel;
 	}
 
-	private UserModel extractSelectedAccount(List<Object[]> foundAccounts, int index) {		
+	private UserModel extractSelectedAccount(List<Object[]> foundAccounts, int index) {
 		int i = 0;
 		int ID = (Integer) (foundAccounts.get(index))[i];
 		String firstName = (String) (foundAccounts.get(index))[++i];

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.nortal.lazar.user.entity.UserEntity;
 import com.nortal.lazar.user.repository.UserRepository;
 
-@Service
+//@Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -32,8 +32,7 @@ public class UserServiceImpl implements UserService {
 	public void updateUser(UserEntity userEntity) {
 		userRepository.updateUser(userEntity);
 	}
-	
-	
+
 	@Transactional
 	@Override
 	public void updatePassword(int userID, String newPassword) {

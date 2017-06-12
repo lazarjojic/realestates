@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.nortal.lazar.realestate.model.RealEstateAddressModel;
-import com.nortal.lazar.realestate.model.RealEstateModel;
 import com.nortal.lazar.realestate.model.RealEstateWrapperModel;
 
 @SessionAttributes("realEstateModel")
@@ -22,7 +20,8 @@ public class AddEditRealEstateController {
 		// RealEstateWrapperModel realEstateWrapperModel = new
 		// RealEstateWrapperModel();
 		// model.addAttribute("realEstateWrapperModel", realEstateWrapperModel);
-	//	RealEstateModel realEstateModel = (RealEstateModel) session.getAttribute("realEstateModel");
+		// RealEstateModel realEstateModel = (RealEstateModel)
+		// session.getAttribute("realEstateModel");
 		return "/protected/realEstate/AddEditRealEstate";
 	}
 

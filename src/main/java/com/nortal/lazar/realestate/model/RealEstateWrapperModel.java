@@ -6,7 +6,7 @@ public class RealEstateWrapperModel {
 
 	private RealEstateAddressModel realEstateAddressModel;
 
-	public RealEstateWrapperModel(RealEstateModel realEstateModel, RealEstateAddressModel realEstateAddressModel) {		
+	public RealEstateWrapperModel(RealEstateModel realEstateModel, RealEstateAddressModel realEstateAddressModel) {
 		this.realEstateModel = realEstateModel;
 		this.realEstateAddressModel = realEstateAddressModel;
 	}
@@ -31,7 +31,5 @@ public class RealEstateWrapperModel {
 	public void setRealEstateAddressModel(RealEstateAddressModel realEstateAddressModel) {
 		this.realEstateAddressModel = realEstateAddressModel;
 	}
-	
-	
 
 }

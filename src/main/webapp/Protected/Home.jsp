@@ -38,7 +38,7 @@ body {
 </head>
 <body>
 	<h1>Real Estates</h1>
-	<c:if test="${sessionScope.user.status == 'admin'}">
+	<c:if test="${sessionScope.currentUser.getStatus() == 'admin'}">
 		<ul class="nav">
 			<li>Accounts
 				<ul>
@@ -57,7 +57,7 @@ body {
 		</ul>
 	</c:if>
 
-	<c:if test="${sessionScope.user.status != 'agent'}">
+	<c:if test="${sessionScope.currentUser.getStatus() != 'agent'}">
 		<ul>
 			<li>Real Estates
 				<ul>
@@ -68,7 +68,7 @@ body {
 		</ul>
 	</c:if>
 
-	<c:if test="${sessionScope.user.status == 'agent'}">
+	<c:if test="${sessionScope.currentUser.getStatus() == 'agent'}">
 		<ul>
 			<li><a href="<%=request.getContextPath() + "/protected/realEstate/searchRealEstates"%>">Search Real Estates</a></li>
 		</ul>

@@ -26,9 +26,9 @@ public class AddEditAgencyController {
 		if (action.equals("Close")) {
 			return "/protected/Home";
 		} else {
-			//for this better constructor
+			// for this better constructor
 			AgencyEntity agencyEntity = new AgencyEntity(agencyModel.getName(), agencyModel.getPIB(), agencyModel.getDirector(), agencyModel.getAddress(), agencyModel.getPhone());
-			agencyService.save(agencyEntity);			
+			agencyService.save(agencyEntity);
 			return "redirect:/protected/agency/addEditAgency";
 		}
 	}

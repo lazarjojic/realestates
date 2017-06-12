@@ -77,14 +77,14 @@ public class AgencyRepositoryImpl implements AgencyRepository {
 		buf.append("and (pib=:pib or :pib is null) ");
 		buf.append("and (director=:director or :director is null) ");
 		buf.append("and (address=:address or :address is null) ");
-		buf.append("and (phone=:phone or :phone is null) ");		
+		buf.append("and (phone=:phone or :phone is null) ");
 		String queryText = buf.toString();
 		Query query = em.createQuery(queryText);
 		query.setParameter("name", name);
 		query.setParameter("pib", PIB);
 		query.setParameter("director", director);
 		query.setParameter("address", address);
-		query.setParameter("phone", phone);		
+		query.setParameter("phone", phone);
 		return (List<AgencyEntity>) query.getResultList();
 	}
 

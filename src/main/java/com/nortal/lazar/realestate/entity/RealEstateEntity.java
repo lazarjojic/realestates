@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
-
 @Entity
 @Table(name = "real_estate")
 public class RealEstateEntity {

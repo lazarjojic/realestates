@@ -18,7 +18,8 @@ import com.nortal.lazar.agency.model.AgencyModel;
 public class ViewAgency {
 
 	@RequestMapping(value = "/protected/agency/viewAgency", method = RequestMethod.POST)
-	public String submitViewAgencyPage(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("agencyToView") AgencyModel agencyToView, Model model, SessionStatus sessionStatus) {
+	public String submitViewAgencyPage(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("agencyToView") AgencyModel agencyToView, Model model,
+			SessionStatus sessionStatus) {
 		model.addAttribute("agency", agencyToView);
 		String action = request.getParameter("action");
 		switch (action) {

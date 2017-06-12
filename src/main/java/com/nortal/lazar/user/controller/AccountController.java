@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.nortal.lazar.agency.service.AgencyService;
 import com.nortal.lazar.user.model.UserModel;
@@ -24,7 +23,7 @@ public class AccountController {
 	 * form submition (closing or ...)
 	 */
 	@RequestMapping(value = "/Protected/account", method = RequestMethod.POST)
-	public String submitPage(Model model,HttpServletRequest request, HttpServletResponse response) {
+	public String submitPage(Model model, HttpServletRequest request, HttpServletResponse response) {
 		String action = request.getParameter("action").toString();
 		if (action.equals("Close")) {
 			return "Protected/Home";

@@ -7,22 +7,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class PlanController {
 
-//	@RequestMapping(value = "/Protected/addPhotos", method = RequestMethod.POST)
-//	public String staOvde(HttpServletRequest request, HttpServletResponse response) {
-//		String action = request.getParameter("action");
-//		if (action.equals("close")) {
-//			return "index";
-//		} else {
-//			String name = request.getParameter("name");
-//			String pib = request.getParameter("pib");
-//			String director = request.getParameter("director");
-//			String address = request.getParameter("address");
-//			String phone = request.getParameter("phone");
-//			Agency agency = new Agency(name, pib, director, address, phone);
-//			agencyService.save(agency);
-//			return "/Protected/AddAgency";
-//		}
-//	}
+	// @RequestMapping(value = "/Protected/addPhotos", method =
+	// RequestMethod.POST)
+	// public String staOvde(HttpServletRequest request, HttpServletResponse
+	// response) {
+	// String action = request.getParameter("action");
+	// if (action.equals("close")) {
+	// return "index";
+	// } else {
+	// String name = request.getParameter("name");
+	// String pib = request.getParameter("pib");
+	// String director = request.getParameter("director");
+	// String address = request.getParameter("address");
+	// String phone = request.getParameter("phone");
+	// Agency agency = new Agency(name, pib, director, address, phone);
+	// agencyService.save(agency);
+	// return "/Protected/AddAgency";
+	// }
+	// }
 
 	@RequestMapping(value = "/protected/realEstate/plan", method = RequestMethod.GET)
 	public String openPage() {

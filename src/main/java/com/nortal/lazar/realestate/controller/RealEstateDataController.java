@@ -12,17 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.nortal.lazar.realestate.model.RealEstateWrapperModel;
-import com.nortal.lazar.realestate.service.RealEstateAddressService;
 import com.nortal.lazar.user.service.UserService;
 
 @SessionAttributes("realEstateWrapperModel")
 @Controller
 public class RealEstateDataController {
-	
+
 	@Autowired
 	private UserService userService;
-	
-	
 
 	@RequestMapping(value = "/protected/realEstate/realEstateData", method = RequestMethod.GET)
 	public String openPage(Model model) {

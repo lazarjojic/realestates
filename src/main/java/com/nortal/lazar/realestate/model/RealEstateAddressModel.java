@@ -8,12 +8,12 @@ public class RealEstateAddressModel {
 	private String street;
 	private String number;
 	private int floor;
-	
+
 	public RealEstateAddressModel() {
-		
+
 	}
 
-	public RealEstateAddressModel(int ID, int realEstateID, String city, String street, String number, int floor) {		
+	public RealEstateAddressModel(int ID, int realEstateID, String city, String street, String number, int floor) {
 		this.ID = ID;
 		this.realEstateID = realEstateID;
 		this.city = city;
@@ -69,6 +69,5 @@ public class RealEstateAddressModel {
 	public void setFloor(int floor) {
 		this.floor = floor;
 	}
-	
-	
+
 }

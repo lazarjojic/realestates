@@ -50,7 +50,5 @@ public class PhotoModel {
 	public void setRealEstateID(int realEstateID) {
 		this.realEstateID = realEstateID;
 	}
-	
-	
 
 }

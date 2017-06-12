@@ -5,11 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
 
 import org.springframework.stereotype.Repository;
 
-import com.nortal.lazar.agency.entity.AgencyEntity;
 import com.nortal.lazar.user.entity.UserEntity;
 
 @Repository("userRepository")
@@ -18,16 +16,17 @@ public class UserRepositoryImpl implements UserRepository {
 	@PersistenceContext
 	private EntityManager em;
 
+	@Override
 	public UserEntity save(UserEntity userEntity) {
 		em.persist(userEntity);
 		return userEntity;
 	}
 
+	@Override
 	public UserEntity getUser(String username) {
 		Query query = em.createQuery("select user from UserEntity as user where username=:username");
 		query.setParameter("username", username);
 		List<UserEntity> resultList = query.getResultList();
-
 		if (resultList.isEmpty())
 			return null;
 		UserEntity userEntity = resultList.get(0);

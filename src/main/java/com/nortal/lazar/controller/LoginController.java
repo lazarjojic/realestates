@@ -9,10 +9,12 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nortal.lazar.agency.entity.AgencyEntity;
@@ -38,7 +40,6 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView openPage(HttpServletRequest request, HttpServletResponse response) {
-
 		this.getClass().getClassLoader().getResourceAsStream("korali.jpg");
 		if (isUserLogedin(request)) {
 			return new ModelAndView("protected/Home");
@@ -58,7 +59,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String submitPage(@Valid @ModelAttribute("login") LoginModel loginModel, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+	public String submitPage(@Valid @ModelAttribute("login") LoginModel loginModel, BindingResult result, HttpServletRequest request, Model model) {
 		if (result.hasErrors()) {
 			return "Login";
 		}
@@ -80,11 +81,11 @@ public class LoginController {
 	}
 
 	private void setSessionData(HttpServletRequest request, UserEntity userEntity) {
-		UserModel user = new UserModel(userEntity);
-		AgencyEntity agencyEntity = agencyService.getAgency(user.getAgencyID());
-		user.setAgencyName(agencyEntity.getName());
+		UserModel currentUser = new UserModel(userEntity);
+		AgencyEntity agencyEntity = agencyService.getAgency(currentUser.getAgencyID());
+		currentUser.setAgencyName(agencyEntity.getName());
 		HttpSession session = request.getSession();
-		session.setAttribute("user", user);
+		session.setAttribute("currentUser", currentUser);
 		session.setAttribute("isAuthorized", true);
 	}
 
